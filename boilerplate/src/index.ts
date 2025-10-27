@@ -2,31 +2,28 @@ import path from 'path';
 import dotenv from 'dotenv';
 
 import { App, BetterAuth, Model, MySqlDatabase } from '@js20/core';
-import { sInteger, sString } from '@js20/schema';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
+import { sNumber, sString } from '@js20/schema';
 
 dotenv.config();
 
-interface MyModel {
+interface Example {
     someString: string;
-    someInteger: number;
+    someNumber: number;
 }
 
-const sMyModel: MyModel = {
+const sExample: Example = {
     someString: sString().nonEmpty().type(),
-    someInteger: sInteger().type()
+    someNumber: sNumber().type()
 };
 
 interface Models {
-    myModel: Model<MyModel>;
+    example: Model<Example>;
 }
 
 const models: Models = {
-    myModel: {
-        name: 'MyModel',
-        schema: sMyModel,
+    example: {
+        name: 'Example',
+        schema: sExample,
     }
 }
 
@@ -40,12 +37,12 @@ const auth = new BetterAuth(database);
 database.addModels(models);
 app.addDatabase(database);
 app.setAuthenticator(auth);
-app.addCrudEndpoints(models.myModel);
+app.addCrudEndpoints(models.example);
 
 async function run() {
     await app.generate({
-        entryPath: __filename,
-        outputs: [path.resolve('dist-client/client.js')],
+        entryPath: path.resolve('src/index.ts'),
+        outputs: [path.resolve('dist-client/client.ts')],
         baseUrl: 'http://localhost:3000',
     });
 
