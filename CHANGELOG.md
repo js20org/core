@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/js20org/core/compare/v1.1.0...v1.1.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* problems with boilerplate and generate ([c2a0c23](https://github.com/js20org/core/commit/c2a0c2324c4b677d694c0ca42e32a4fa0b789167))
+
 # [1.1.0](https://github.com/js20org/core/compare/v1.0.5...v1.1.0) (2025-10-27)
 
 
