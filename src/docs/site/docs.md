@@ -6,7 +6,7 @@ $$ meta:description JS20
 $$ codeQuote
 
 ## Quick start
-In your backend run:
+✨ Generate a new JS20 project with the command below. This will set up a simple project structure, with an example app & all required dependencies.
 
 ```
 npx @js20/core
