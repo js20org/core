@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/js20org/core/compare/v1.0.5...v1.1.0) (2025-10-27)
+
+
+### Features
+
+* boilerplate and bin ([a2c4581](https://github.com/js20org/core/commit/a2c458192232d0cb6383621357d66d955a9be4e9))
+* made bin executable ([9ea0fa4](https://github.com/js20org/core/commit/9ea0fa4a521fb60affeb2b2f01abf7326d84824b))
+
 ## [1.0.5](https://github.com/js20org/core/compare/v1.0.4...v1.0.5) (2025-10-27)
 
 
