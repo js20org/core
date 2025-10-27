@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/js20org/core/compare/v1.2.1...v1.3.0) (2025-10-27)
+
+
+### Bug Fixes
+
+* improved install instructions ([188cc38](https://github.com/js20org/core/commit/188cc38262ae423eef3433cd46957e050e2cda89))
+
+
+### Features
+
+* beta notes ([c8d7c78](https://github.com/js20org/core/commit/c8d7c78310490ab756db380ac6cdf9ae8645f06f))
+
 ## [1.2.1](https://github.com/js20org/core/compare/v1.2.0...v1.2.1) (2025-10-27)
 
 
