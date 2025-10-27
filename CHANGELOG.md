@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/js20org/core/compare/v1.3.0...v1.4.0) (2025-10-27)
+
+
+### Features
+
+* favicon and improved quick start ([d311538](https://github.com/js20org/core/commit/d311538dfa23ac7d3520bd0fe0a08d1d42a5177c))
+
 # [1.3.0](https://github.com/js20org/core/compare/v1.2.1...v1.3.0) (2025-10-27)
 
 
