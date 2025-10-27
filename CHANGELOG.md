@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/js20org/core/compare/v1.0.0...v1.0.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* trigger new release ([2ea402f](https://github.com/js20org/core/commit/2ea402f0ff22ccc5cbac55c1c90ab39ed324693b))
+
 # 1.0.0 (2025-10-27)
 
 
