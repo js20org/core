@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/js20org/core/compare/v1.1.1...v1.2.0) (2025-10-27)
+
+
+### Features
+
+* added generate to boilerplate ([49b28c8](https://github.com/js20org/core/commit/49b28c84d4e4770c564bdbb6fa8b60c767d75afa))
+
 ## [1.1.1](https://github.com/js20org/core/compare/v1.1.0...v1.1.1) (2025-10-27)
 
 
