@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/js20org/core/compare/v1.2.0...v1.2.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* upgrade boilerplate ([117c75d](https://github.com/js20org/core/commit/117c75d5fa69841bade3235cfd568a2cd8b07df2))
+
 # [1.2.0](https://github.com/js20org/core/compare/v1.1.1...v1.2.0) (2025-10-27)
 
 
