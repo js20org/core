@@ -204,11 +204,11 @@ export class App<M extends ModelObject<M>> {
     }
 
     async generate(config: GenerateConfig) {
-        this.isLocked = true;
-
         if (!this.hasInitialized) {
             await this.initialize();
         }
+
+        this.isLocked = true;
 
         const logger = config.quiet ? new EmptyGenerateLogger() : new DefaultGenerateLogger();
         const app = this.getAppData();

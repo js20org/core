@@ -10,7 +10,7 @@ const files = [
     'src/index.ts',
     '_.env',
     '_tsconfig.json',
-    '.gitignore',
+    '_.gitignore',
     'package.json',
     'README.md'
 ];
