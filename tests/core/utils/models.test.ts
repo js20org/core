@@ -89,6 +89,22 @@ describe('getComputedModels', () => {
         expect(computed[0].isOwned).toBe(false);
         expect(computed[1].isOwned).toBe(true);
     });
+
+    it('passes along isInternal flag', () => {
+        const models = [
+            {
+                schema: {
+                    value: sString().type(),
+                },
+                name: 'Test',
+                modelKey: 'test',
+                isInternal: true,
+            }
+        ];
+
+        const computed = getComputedModels(models, true, ['id', 'owner']);
+        expect(computed[0].isInternal).toBe(true);
+    });
 });
 
 describe('verifyName', () => {

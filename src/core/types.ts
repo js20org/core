@@ -221,7 +221,12 @@ export interface Model<T> {
     preserveName?: boolean;
 }
 
+export interface InternalModel<T> extends Model<T> {
+    isInternal: boolean;
+}
+
 export interface ComputedModel {
+    isInternal: boolean;
     model: ModelItem;
     validatedSchema: ValidatedSchema<any>;
     isOwned: boolean;

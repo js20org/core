@@ -15,8 +15,12 @@ export function getAttributesWithUuidId(attributes: any) {
     };
 }
 
-export function getAttributesWithOwnerId(attributes: any, hasOwner: boolean) {
-    if (hasOwner) {
+export function getAttributesWithOwnerId(
+    attributes: any,
+    hasOwner: boolean,
+    isInternal: boolean
+) {
+    if (hasOwner && !isInternal) {
         return {
             ...attributes,
             ownerId: {

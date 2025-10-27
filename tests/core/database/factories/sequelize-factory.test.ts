@@ -93,6 +93,7 @@ function getTestFactory(options?: Partial<Options>) {
         isOwned: options?.isOwned ?? false,
         user: options?.user ?? null,
         bypassOwnership: options?.bypassOwnership ?? false,
+        transaction: undefined as any,
     });
 }
 

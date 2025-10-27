@@ -9,6 +9,7 @@ export function getComputedModels(
     return allModels.map(model => {
         const defaultIsOwned = hasAuthentication;
         const isOwned = model.isOwned ?? defaultIsOwned;
+        const isInternal = 'isInternal' in model && model.isInternal === true;
         const validatedSchema = getValidatedSchema(model.schema);
         const otherModels = allModels.filter(m => m !== model);
 
@@ -22,6 +23,7 @@ export function getComputedModels(
             model,
             validatedSchema,
             isOwned,
+            isInternal,
         };
     })
 }

@@ -116,12 +116,12 @@ export class MySqlDatabase extends BaseDatabase<Pool> {
     }
 
     private defineModel(computed: ComputedModel) {
-        const { model, isOwned } = computed;
+        const { model, isOwned, isInternal } = computed;
         const { modelKey, preserveName = false } = model;
 
         const attributes = getSequelizeFieldsFromSchema(computed.validatedSchema);
         const withStringId = getAttributesWithUuidId(attributes);
-        const withOwner = getAttributesWithOwnerId(withStringId, isOwned);
+        const withOwner = getAttributesWithOwnerId(withStringId, isOwned, isInternal);
         const tableName = preserveName ? model.name : getPascalCasing(model.name);
 
         const sequelizeModel = this.sequelize.define(tableName, withOwner, {

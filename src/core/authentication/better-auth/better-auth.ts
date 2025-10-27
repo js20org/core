@@ -1,14 +1,14 @@
 import { sBoolean, sDate, sString } from '@js20/schema';
 import { MySqlDatabase } from '../../database/instances/mysql.js';
-import type { AuthConfig, Authenticator, Model, User as GlobalUser, Headers, PluginProps } from '../../types.js';
+import type { AuthConfig, Authenticator, User as GlobalUser, Headers, PluginProps, InternalModel } from '../../types.js';
 import { betterAuth } from "better-auth";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 
 interface AuthModels {
-    user: Model<User>;
-    session: Model<Session>;
-    account: Model<Account>;
-    verification: Model<Verification>;
+    user: InternalModel<User>;
+    session: InternalModel<Session>;
+    account: InternalModel<Account>;
+    verification: InternalModel<Verification>;
 }
 
 interface User {
@@ -84,21 +84,25 @@ const models: AuthModels = {
         name: 'user',
         schema: sUser,
         preserveName: true,
+        isInternal: true,
     },
     session: {
         name: 'session',
         schema: sSession,
         preserveName: true,
+        isInternal: true,
     },
     account: {
         name: 'account',
         schema: sAccount,
         preserveName: true,
+        isInternal: true,
     },
     verification: {
         name: 'verification',
         schema: sVerification,
         preserveName: true,
+        isInternal: true,
     }
 }
 

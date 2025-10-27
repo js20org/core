@@ -1,13 +1,14 @@
 import { getValidatedSchema, sAny, sBoolean, sString, validateBySchema } from '@js20/schema';
-import type { ComputedModel, Database, Model, ModelFactory, ModelFactoryProps, ModelItem, ModelObject, PluginProps } from '../types.js';
+import type { ComputedModel, Database, InternalModel, Model, ModelFactory, ModelFactoryProps, ModelItem, ModelObject, PluginProps } from '../types.js';
 import { type Database as BetterSqlite3Database } from 'better-sqlite3';
 import { Transaction } from 'sequelize';
 
-const sModel: Model<any> = {
+const sModel: InternalModel<any> = {
     name: sString().nonEmpty().type(),
     schema: sAny().type(),
     isOwned: sBoolean().optional().type(),
-    preserveName: sBoolean().optional().type()
+    preserveName: sBoolean().optional().type(),
+    isInternal: sBoolean().optional().type()
 };
 
 const validatedModelSchema = getValidatedSchema(sModel);
