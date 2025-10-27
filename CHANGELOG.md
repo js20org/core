@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/js20org/core/compare/v1.0.3...v1.0.4) (2025-10-27)
+
+
+### Bug Fixes
+
+* internal models dont have owners ([2376ff2](https://github.com/js20org/core/commit/2376ff219aa87e36c867157ca0c641857dfe5cbb))
+* replace build for better esm support ([ce871a3](https://github.com/js20org/core/commit/ce871a38a264ac1c45b3cc83a542ff5d6de5ff42))
+
 ## [1.0.3](https://github.com/js20org/core/compare/v1.0.2...v1.0.3) (2025-10-27)
 
 
