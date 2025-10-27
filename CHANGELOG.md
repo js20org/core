@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/js20org/core/compare/v1.0.4...v1.0.5) (2025-10-27)
+
+
+### Bug Fixes
+
+* build ([9582e6e](https://github.com/js20org/core/commit/9582e6e377c1365ef3d568b7ce55854a05fdbaad))
+
 ## [1.0.4](https://github.com/js20org/core/compare/v1.0.3...v1.0.4) (2025-10-27)
 
 
