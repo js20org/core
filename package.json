@@ -54,7 +54,7 @@
     },
     "devDependencies": {
         "@js20/deploy": "^1.1.0",
-        "@js20/markdown-site": "^1.20.1",
+        "@js20/markdown-site": "^1.20.4",
         "@js20/node-utils": "^1.4.6",
         "@js20/schema": "^1.2.0",
         "@semantic-release/changelog": "^6.0.3",

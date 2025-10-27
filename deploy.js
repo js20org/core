@@ -1,5 +1,5 @@
-const path = require('path');
-const { deployGcloudFrontend } = require('@js20/deploy');
+import path from 'path';
+import { deployGcloudFrontend } from '@js20/deploy';
 
 const run = async () => {
     await deployGcloudFrontend({

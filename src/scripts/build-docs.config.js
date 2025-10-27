@@ -1,12 +1,16 @@
-const { build } = require('esbuild');
+import { build } from 'esbuild';
 
 build({
     entryPoints: ['./src/docs/index.ts'],
-    bundle: true,
-    platform: 'node',
+    tsconfig: "tsconfig.docs.json",
     outfile: './dist/docs/bundle.js',
-    target: 'node16',
+    bundle: true,
+    format: 'esm',
+    platform: 'node',
+    target: 'node20',
+    sourcemap: 'linked',
     minify: false,
-    sourcemap: true,
-    tsconfig: "tsconfig.docs.json"
+    packages: 'external',
+    keepNames: true,
+    metafile: true
 }).catch(() => process.exit(1));

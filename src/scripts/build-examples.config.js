@@ -1,14 +1,18 @@
-const { build } = require('esbuild');
+import { build } from 'esbuild';
 
 build({
     entryPoints: ['./src/examples/*.ts', './src/examples/raw/*.ts'],
-    bundle: true,
-    platform: 'node',
-    outdir: './dist/examples',
     external: ['pg-hstore', 'prettier'],
-    target: 'node16',
+    outdir: './dist/examples',
+    bundle: true,
+    format: 'esm',
+    platform: 'node',
+    target: 'node20',
+    sourcemap: 'linked',
     minify: false,
-    sourcemap: true,
+    packages: 'external',
+    keepNames: true,
+    metafile: true,
     tsconfig: "tsconfig.json",
     alias: {
         '@js20/core': './src/core'

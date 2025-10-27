@@ -1,8 +1,11 @@
 import fs from 'fs';
-import path from 'path';
-import { DefinedArgsCommand, RawArgsCommand, Website, buildWebsite } from '@js20/markdown-site';
-import { sAny } from '@js20/schema';
+import path, { dirname } from 'path';
+import { RawArgsCommand, Website, buildWebsite } from '@js20/markdown-site';
 import { getNonSpaceCharCount } from './utils/file-size';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function getDeIndentedString(input: string): string {
     const numberOfSpaces = getNumberOfSpacesIndent(input);

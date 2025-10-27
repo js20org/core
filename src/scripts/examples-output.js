@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const { spawn } = require("child_process");
+import fs from "fs";
+import path from "path";
+import { spawn } from "child_process";
 
 const sourceDirectory = path.resolve("dist/examples");
 const outputLogsDirectory = path.resolve("src/examples/output/logs");
