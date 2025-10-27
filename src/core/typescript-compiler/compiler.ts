@@ -1,14 +1,14 @@
 import ts, {
-    InterfaceDeclaration,
-    Program,
+    type InterfaceDeclaration,
+    type Program,
     ScriptKind,
     ScriptTarget,
-    SourceFile,
-    VariableStatement,
+    type SourceFile,
+    type VariableStatement,
 } from 'typescript';
 import fs from 'fs';
-import { BuiltInterface, BuiltInterfaceProperty, GenerateResolvedItem, TypescriptCompiler, TypescriptEnum, TypescriptInterface, TypescriptInterfaceProperty, TypescriptModelMap, TypescriptReference, TypescriptSchema, TypescriptType } from './types';
-import { getModelMap } from './model-map';
+import type { BuiltInterface, BuiltInterfaceProperty, GenerateResolvedItem, TypescriptCompiler, TypescriptEnum, TypescriptInterface, TypescriptInterfaceProperty, TypescriptModelMap, TypescriptReference, TypescriptSchema, TypescriptType } from './types.js';
+import { getModelMap } from './model-map.js';
 
 const getSchema = (node: VariableStatement): TypescriptSchema | null => {
     const declaration = node.declarationList.declarations[0];

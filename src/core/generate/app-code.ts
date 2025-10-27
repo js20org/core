@@ -1,14 +1,14 @@
-import { IEnumData, INumberData, IOptionalData, IOptionalObjectData, ISchemaData, SchemaType } from '@js20/schema';
-import { Action, AppCode, AppData, ComputedEndpoint } from '../types';
-import { DefaultTypescriptCompiler } from '../typescript-compiler/compiler';
-import { DefaultReferenceBuilder } from '../typescript-compiler/reference-builder';
-import { getResolvedNestedReferences, getSortedReferences } from '../typescript-compiler/references';
-import { BuiltInterface, Compilation, ReferenceBuilder } from '../typescript-compiler/types';
-import { areObjectsEqual } from '../utils/object';
-import { isObject } from '../utils/validation';
-import { getOptimizedTypescriptFromSchema, getTypescriptFromEnum } from './ts-from-schema';
-import { getGeneratedEndpointName } from './endpoint-name';
-import { GenerateLogger } from './logger';
+import { SchemaType, type IEnumData, type INumberData, type IOptionalData, type IOptionalObjectData, type ISchemaData } from '@js20/schema';
+import type { Action, AppCode, AppData, ComputedEndpoint } from '../types.js';
+import { DefaultTypescriptCompiler } from '../typescript-compiler/compiler.js';
+import { DefaultReferenceBuilder } from '../typescript-compiler/reference-builder.js';
+import { getResolvedNestedReferences, getSortedReferences } from '../typescript-compiler/references.js';
+import type { BuiltInterface, Compilation, ReferenceBuilder } from '../typescript-compiler/types.js';
+import { areObjectsEqual } from '../utils/object.js';
+import { isObject } from '../utils/validation.js';
+import { getOptimizedTypescriptFromSchema, getTypescriptFromEnum } from './ts-from-schema.js';
+import { getGeneratedEndpointName } from './endpoint-name.js';
+import type { GenerateLogger } from './logger.js';
 import { fontDim, fontGreen, fontYellow } from '@js20/node-utils';
 
 interface Props {

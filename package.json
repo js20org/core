@@ -2,19 +2,11 @@
     "name": "@js20/core",
     "version": "1.0.3",
     "license": "MIT",
-    "type": "module",
     "sideEffects": false,
-    "exports": {
-        ".": {
-            "types": "./dist/types/index.d.ts",
-            "default": "./dist/esm/index.js"
-        },
-        "./*": {
-            "types": "./dist/types/*.d.ts",
-            "default": "./dist/esm/*"
-        }
-    },
-    "types": "./dist/types/index.d.ts",
+    "type": "module",
+    "exports": "./dist/index.js",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/esm",
         "dist/types",
@@ -32,8 +24,8 @@
         "examples:build": "node src/scripts/build-examples.config.js",
         "examples:output": "npm run examples:build && node src/scripts/examples-output.js",
         "example": "npm run examples:build && node src/scripts/example.js",
-        "precore:build": "rimraf ./dist/esm && rimraf ./dist/types",
-        "core:build": "node src/scripts/build-core.js && tsc -p tsconfig.types.json",
+        "precore:build": "rimraf ./dist",
+        "core:build": "tsc -p tsconfig.core.json",
         "start": "npm run examples:output && IS_DEV=true BUILD_COMMAND=docs:build APP_DIRECTORY=./src/docs OUTPUT_PATH=./dist/website WATCH_PATH=./src js20-site-dev",
         "test": "vitest run",
         "test:watch": "vitest --watch",

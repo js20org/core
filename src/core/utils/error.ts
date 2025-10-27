@@ -1,6 +1,6 @@
 import { SchemaInvalidError, SchemaInvalidValueError } from '@js20/schema';
-import { ErrorHandler, ErrorResponse } from '../types';
-import { ISchemaIssue } from '@js20/schema/dist-esm/types';
+import type { ErrorHandler, ErrorResponse } from '../types.js';
+import type { ISchemaIssue } from '@js20/schema/dist-esm/types.js';
 
 export async function globalHandleError(error: any, errorHandler?: ErrorHandler): Promise<ErrorResponse> {
     const validationError = getValidationError(error);

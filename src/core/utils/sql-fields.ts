@@ -1,7 +1,7 @@
 import { BOOLEAN, DATE, INTEGER, DOUBLE, STRING, TEXT, DataTypes } from 'sequelize';
-import { INumberData, IOptionalData, ISchemaData, IStringData, SchemaType, ValidatedSchema } from '@js20/schema';
+import { type INumberData, type IOptionalData, type ISchemaData, type IStringData, SchemaType, ValidatedSchema } from '@js20/schema';
 
-import { isArrayOrObject, isNumber } from './validation';
+import { isArrayOrObject, isNumber } from './validation.js';
 
 export function getAttributesWithUuidId(attributes: any) {
     return {

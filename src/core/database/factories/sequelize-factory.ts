@@ -1,8 +1,8 @@
-import { Model, Sequelize, WhereOptions, Transaction } from 'sequelize';
-import { ModelFactory, User } from '../../types';
+import { Model, Sequelize, type WhereOptions, Transaction } from 'sequelize';
 import { getValidatedSchema, sString, validateBySchema, ValidatedSchema } from '@js20/schema';
-import { Instance, sIdInput, sInstance } from '../../types-shared';
-import { Schema } from '../../utils/schema';
+import type { ModelFactory, User } from '../../types.js';
+import { type Instance, sIdInput, sInstance } from '../../types-shared.js';
+import { Schema } from '../../utils/schema.js';
 
 type SequelizeModel = ReturnType<Sequelize['define']>;
 

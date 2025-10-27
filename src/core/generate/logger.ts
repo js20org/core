@@ -1,4 +1,4 @@
-import { GenerateConfig } from '../types';
+import { type GenerateConfig } from '../types.js';
 
 export interface GenerateLogger {
     log: (message: string) => void;

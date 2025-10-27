@@ -1,5 +1,5 @@
-import { IOptionalData } from '@js20/schema';
-import { IdInput, Instance, sIdInput, sInstance } from '../types-shared';
+import { type IOptionalData } from '@js20/schema';
+import { type IdInput, type Instance, sIdInput, sInstance } from '../types-shared.js';
 
 export class Schema {
     static withInstance<T>(schema: T): T & Instance {

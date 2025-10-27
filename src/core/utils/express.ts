@@ -1,5 +1,5 @@
 import Express from 'express';
-import { Headers } from '../types';
+import type { Headers } from '../types.js';
 
 export function getExpressRequestInput(req: Express.Request): any {
     const result: any = {};

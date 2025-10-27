@@ -1,5 +1,5 @@
-import { IEnumData, IOptionalObjectData, ISchemaData, SchemaType } from '@js20/schema';
-import {
+import { SchemaType, type IEnumData, type IOptionalObjectData, type ISchemaData } from '@js20/schema';
+import type {
     TypescriptInterface,
     ReferenceBuilder,
     GenerateResolvedItem,
@@ -7,11 +7,11 @@ import {
     TypescriptReference,
     TypescriptSchema,
     Compilation,
-} from './types';
+} from './types.js';
 
-import { areObjectsEqual } from '../utils/object';
-import { getOrderedItemByReferences } from '../utils/reference-sort';
-import { isObject } from '../utils/validation';
+import { areObjectsEqual } from '../utils/object.js';
+import { getOrderedItemByReferences } from '../utils/reference-sort.js';
+import { isObject } from '../utils/validation.js';
 
 const registerEnumsRecursiveByObject = (
     referenceBuilder: ReferenceBuilder,

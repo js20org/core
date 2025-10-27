@@ -1,6 +1,6 @@
 import { sBoolean, sDate, sString } from '@js20/schema';
-import { MySqlDatabase } from '../../database/instances/mysql';
-import { AuthConfig, Authenticator, Model, User as GlobalUser, Headers, PluginProps } from '../../types';
+import { MySqlDatabase } from '../../database/instances/mysql.js';
+import type { AuthConfig, Authenticator, Model, User as GlobalUser, Headers, PluginProps } from '../../types.js';
 import { betterAuth } from "better-auth";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 

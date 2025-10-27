@@ -1,4 +1,4 @@
-import { ReferenceBuilder } from './types';
+import type { ReferenceBuilder } from './types.js';
 
 export class DefaultReferenceBuilder implements ReferenceBuilder {
     private includedInterfaces: string[] = [];

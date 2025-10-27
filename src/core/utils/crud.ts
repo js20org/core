@@ -1,7 +1,7 @@
-import { CrudActions, CrudEndpoint, CrudEndpointType, Endpoint, Model, ModelFactories, ModelFactory, ModelItem, ModelObject } from '../types';
-import { Schema } from './schema';
-import { getUriCasing } from './string';
-import { sIdInput } from '../types-shared';
+import type { CrudActions, CrudEndpoint, CrudEndpointType, Endpoint, Model, ModelFactories, ModelFactory, ModelItem, ModelObject } from '../types.js';
+import { Schema } from './schema.js';
+import { getUriCasing } from './string.js';
+import { sIdInput } from '../types-shared.js';
 
 export function getEndpointsFromCrud(
     crudEndpoints: CrudEndpoint[],

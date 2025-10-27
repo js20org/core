@@ -1,6 +1,6 @@
-export { App } from './framework';
-export { Model, WebServerType } from './types';
-export * from './types-shared';
-export { BetterAuth } from './authentication/better-auth/better-auth';
-export { Schema } from './utils/schema';
-export { MySqlDatabase, MysqlConnectOptions } from './database/instances/mysql';
+export { App } from './framework.js';
+export { type Model, WebServerType } from './types.js';
+export * from './types-shared.js';
+export { BetterAuth } from './authentication/better-auth/better-auth.js';
+export { Schema } from './utils/schema.js';
+export { MySqlDatabase, type MysqlConnectOptions } from './database/instances/mysql.js';

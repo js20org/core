@@ -1,4 +1,4 @@
-import ts, { InterfaceDeclaration } from 'typescript';
+import ts, { type InterfaceDeclaration } from 'typescript';
 
 export interface TypescriptReference {
     name: string;

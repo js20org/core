@@ -1,6 +1,6 @@
 import { getValidatedSchema, validateBySchema, ValidatedSchema } from '@js20/schema';
-import { ComputedEndpoint, System, Headers, User, RequestHandlerProps, Action, ModelFactoryProps, ModelFactories, Database, BaseSystem, SystemLoggedIn, ModelFactory, ErrorResponse } from '../types';
-import { isAllowedInEndpoint } from '../utils/endpoints';
+import type { ComputedEndpoint, System, Headers, User, RequestHandlerProps, Action, ModelFactoryProps, ModelFactories, Database, BaseSystem, SystemLoggedIn, ErrorResponse } from '../types.js';
+import { isAllowedInEndpoint } from '../utils/endpoints.js';
 import { Transaction } from 'sequelize';
 
 export type Response = {

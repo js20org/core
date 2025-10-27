@@ -1,8 +1,8 @@
-import { IEnumData, IOptionalData, IOptionalObjectData, ISchemaData, SchemaType } from '@js20/schema';
-import { BuiltInterface, BuiltInterfaceProperty, Compilation } from '../typescript-compiler/types';
-import { isObject } from '../utils/validation';
-import { areObjectsEqual } from '../utils/object';
-import { areEqualArrays } from '../utils/array';
+import { SchemaType, type IEnumData, type IOptionalData, type IOptionalObjectData, type ISchemaData } from '@js20/schema';
+import type { BuiltInterface, BuiltInterfaceProperty, Compilation } from '../typescript-compiler/types.js';
+import { isObject } from '../utils/validation.js';
+import { areObjectsEqual } from '../utils/object.js';
+import { areEqualArrays } from '../utils/array.js';
 
 export const getOptimizedTypescriptFromSchema = (
     compilation: Compilation,

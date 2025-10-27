@@ -1,5 +1,5 @@
 import { getValidatedSchema, sBoolean, sString, validateBySchema } from '@js20/schema';
-import { Authenticator, ComputedEndpoint, Endpoint, EndpointMethod, Headers } from '../types';
+import type { Authenticator, ComputedEndpoint, Endpoint, EndpointMethod, Headers } from '../types.js';
 
 export function getComputedEndpoints(
     allEndpoints: Endpoint<any, any, any>[],

@@ -1,4 +1,4 @@
-import { TypescriptModelMap, TypescriptInterface, TypescriptType } from './types';
+import type { TypescriptModelMap, TypescriptInterface, TypescriptType } from './types.js';
 
 const getResolvedType = (
     interfaces: TypescriptInterface[],

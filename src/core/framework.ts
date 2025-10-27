@@ -1,16 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-import { getFrontendCode } from './generate/generate-frontend';
-import { AppConfig, Authenticator, Database, Endpoint, InternalConfig, Model, ModelObject, PluginProps, RegexEndpoint, RequestHandlerProps, WebServer, Action, System, GenerateConfig, AppData, CrudOptions, CrudEndpoint, ModelItem } from './types';
-import { getInternalConfig } from './utils/config';
-import { HealthPlugin } from './utils/health';
-import { getWebServer } from './web-server/web-server';
-import { DefaultGenerateLogger, EmptyGenerateLogger } from './generate/logger';
-import { getEndpointsFromCrud } from './utils/crud';
-import { getComputedEndpoints, verifyEndpoint } from './utils/endpoints';
-import { getComputedModels } from './utils/models';
-import { globalHandleError } from './utils/error';
+import { getFrontendCode } from './generate/generate-frontend.js';
+import type { AppConfig, Authenticator, Database, Endpoint, InternalConfig, Model, ModelObject, PluginProps, RegexEndpoint, RequestHandlerProps, WebServer, Action, System, GenerateConfig, AppData, CrudOptions, CrudEndpoint, ModelItem } from './types.js';
+import { getInternalConfig } from './utils/config.js';
+import { HealthPlugin } from './utils/health.js';
+import { getWebServer } from './web-server/web-server.js';
+import { DefaultGenerateLogger, EmptyGenerateLogger } from './generate/logger.js';
+import { getEndpointsFromCrud } from './utils/crud.js';
+import { getComputedEndpoints, verifyEndpoint } from './utils/endpoints.js';
+import { getComputedModels } from './utils/models.js';
+import { globalHandleError } from './utils/error.js';
 
 export class App<M extends ModelObject<M>> {
     private rawConfig?: AppConfig;

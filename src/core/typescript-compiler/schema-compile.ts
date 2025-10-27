@@ -1,8 +1,8 @@
-import { IEnumData, IOptionalData, IOptionalObjectData, ISchemaData, SchemaType } from '@js20/schema';
-import { BuiltInterface, BuiltInterfaceProperty, Compilation } from './types';
-import { areEqualArrays } from '../utils/array';
-import { areObjectsEqual } from '../utils/object';
-import { isObject } from '../utils/validation';
+import { type IEnumData, type IOptionalData, type IOptionalObjectData, type ISchemaData, SchemaType } from '@js20/schema';
+import type { BuiltInterface, BuiltInterfaceProperty, Compilation } from './types.js';
+import { areEqualArrays } from '../utils/array.js';
+import { areObjectsEqual } from '../utils/object.js';
+import { isObject } from '../utils/validation.js';
 
 const isInterfaceIncluded = (
     schema: BuiltInterfaceProperty[],

@@ -1,7 +1,7 @@
 import Express from 'express';
-import { AppData, ComputedEndpoint, RequestHandlerProps, WebServer, WebServerConfig } from '../../types';
-import { getExpressHeaders, getExpressRequestInput } from '../../utils/express';
-import { handleRequest } from '../../request-handler/request-handler';
+import type { AppData, ComputedEndpoint, RequestHandlerProps, WebServer, WebServerConfig } from '../../types.js';
+import { getExpressHeaders, getExpressRequestInput } from '../../utils/express.js';
+import { handleRequest } from '../../request-handler/request-handler.js';
 
 export class ExpressServer implements WebServer {
     private app: Express.Application;

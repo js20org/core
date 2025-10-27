@@ -1,4 +1,4 @@
-import { AppConfig as InputConfig, InternalConfig, WebServerType } from '../types';
+import { WebServerType, type AppConfig as InputConfig, type InternalConfig } from '../types.js';
 
 // Rewrite so it looks good in the docs
 type AppConfig = InternalConfig;

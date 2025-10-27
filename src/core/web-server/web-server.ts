@@ -1,5 +1,5 @@
-import { InternalConfig, WebServer, WebServerType } from '../types';
-import { ExpressServer } from './instances/express-server';
+import { type InternalConfig, type WebServer, WebServerType } from '../types.js';
+import { ExpressServer } from './instances/express-server.js';
 
 export function getWebServer(config: InternalConfig): WebServer {
      switch (config.server.type) {

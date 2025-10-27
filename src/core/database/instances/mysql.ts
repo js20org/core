@@ -1,14 +1,15 @@
-import { createPool, Pool } from "mysql2/promise";
-import { Options as SequelizeOptions, Sequelize, DataTypes, Transaction } from 'sequelize';
-import { ComputedModel, ModelFactory, ModelFactoryProps, PluginProps, User } from '../../types';
-import { BaseDatabase } from '../database';
-import { getAttributesWithOwnerId, getAttributesWithUuidId, getSequelizeFieldsFromSchema } from '../../utils/sql-fields';
-import { getPascalCasing } from '../../utils/string';
+import { createPool, type Pool } from "mysql2/promise";
+import { type Options as SequelizeOptions, Sequelize, Transaction } from 'sequelize';
 import { fontDim } from '@js20/node-utils';
 import { format } from 'sql-formatter';
-import { SequelizeFactory } from '../factories/sequelize-factory';
-import { Instance } from '../../types-shared';
-import Db, { Database as BetterSqlite3Database } from 'better-sqlite3';
+import Db, { type Database as BetterSqlite3Database } from 'better-sqlite3';
+
+import type { ComputedModel, ModelFactory, ModelFactoryProps, PluginProps } from '../../types.js';
+import { BaseDatabase } from '../database.js';
+import { getAttributesWithOwnerId, getAttributesWithUuidId, getSequelizeFieldsFromSchema } from '../../utils/sql-fields.js';
+import { getPascalCasing } from '../../utils/string.js';
+import { SequelizeFactory } from '../factories/sequelize-factory.js';
+import type { Instance } from '../../types-shared.js';
 
 export interface MysqlConnectOptions {
     host: string;

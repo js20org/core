@@ -1,4 +1,4 @@
-import { GenerateConfig } from '../types';
+import { type GenerateConfig } from '../types.js';
 
 export function getGenerateComment({ appName, version, comment }: GenerateConfig): string {
     const parts = [];

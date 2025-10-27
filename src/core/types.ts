@@ -1,8 +1,8 @@
 import { ValidatedSchema } from '@js20/schema';
-import { Options as PrettierOptions } from 'prettier';
-import { IdInput, Instance, Message } from './types-shared';
-import { Transaction, WhereOptions } from 'sequelize';
-import { Database as BetterSqlite3Database } from 'better-sqlite3';
+import { type Options as PrettierOptions } from 'prettier';
+import type { IdInput, Instance, Message } from './types-shared.js';
+import { Transaction, type WhereOptions } from 'sequelize';
+import { type Database as BetterSqlite3Database } from 'better-sqlite3';
 
 
 // ---------------- Config ----------------

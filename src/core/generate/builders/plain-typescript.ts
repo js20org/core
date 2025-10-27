@@ -1,4 +1,4 @@
-import { AppCode } from '../../types';
+import { type AppCode } from '../../types.js';
 
 export function getPlainTypescriptCode(
     appCode: AppCode

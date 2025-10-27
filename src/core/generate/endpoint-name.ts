@@ -1,5 +1,5 @@
-import { ComputedEndpoint } from '../types';
-import { getPascalCasing } from '../utils/string';
+import { type ComputedEndpoint } from '../types.js';
+import { getPascalCasing } from '../utils/string.js';
 
 export const getGeneratedEndpointName = (computed: ComputedEndpoint) => {
     const name = getPathName(computed);

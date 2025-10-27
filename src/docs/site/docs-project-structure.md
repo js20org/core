@@ -2,7 +2,7 @@
 $$ meta:title JS20 - User Guide
 $$ meta:description JS20
 
-We recommend using **Esbuild + TypeScript** with the following project structure:
+We recommend using **TypeScript ESM builds** with the following project structure:
 
 ```
 src

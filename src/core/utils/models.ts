@@ -1,5 +1,5 @@
 import { getValidatedSchema } from '@js20/schema';
-import { ComputedModel, ModelItem } from '../types';
+import type { ComputedModel, ModelItem } from '../types.js';
 
 export function getComputedModels(
     allModels: ModelItem[],

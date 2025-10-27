@@ -1,5 +1,5 @@
 import { sString } from '@js20/schema';
-import { Plugin, PluginProps } from '../types';
+import type { PluginProps, Plugin } from '../types.js';
 
 export class HealthPlugin implements Plugin {
     async initialize(props: PluginProps) {

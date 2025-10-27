@@ -1,14 +1,14 @@
-import { format, Options } from 'prettier';
-import { AppData, GenerateConfig } from '../types';
-import { DefaultTypescriptCompiler } from '../typescript-compiler/compiler';
-import { getPlainTypescriptCode } from './builders/plain-typescript';
-import { httpCode } from './code-blocks/http';
-import { validationCode } from './code-blocks/validation';
-import { getGenerateComment } from './comment';
-import { getSection } from './section';
-import { getAppCode } from './app-code';
-import { getSettingsCode } from './code-blocks/settings';
-import { GenerateLogger } from './logger';
+import { format, type Options } from 'prettier';
+import type { AppData, GenerateConfig } from '../types.js';
+import { DefaultTypescriptCompiler } from '../typescript-compiler/compiler.js';
+import { getPlainTypescriptCode } from './builders/plain-typescript.js';
+import { httpCode } from './code-blocks/http.js';
+import { validationCode } from './code-blocks/validation.js';
+import { getGenerateComment } from './comment.js';
+import { getSection } from './section.js';
+import { getAppCode } from './app-code.js';
+import { getSettingsCode } from './code-blocks/settings.js';
+import type { GenerateLogger } from './logger.js';
 
 export async function getFrontendCode(config: GenerateConfig, app: AppData, logger: GenerateLogger): Promise<string> {
     const { entryPath, modelsName = 'Models', prettierOptions = {} } = config;
