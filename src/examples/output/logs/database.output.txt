@@ -1,0 +1,2 @@
+✓ MySQL connected
+Express server is running on port 3000 🚀

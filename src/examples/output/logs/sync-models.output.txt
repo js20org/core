@@ -1,0 +1,13 @@
+✓ MySQL connected
+
+> SQL Query:
+CREATE TABLE IF NOT EXISTS `Cars` (
+  `isLeased` TINYINT(1) NOT NULL,
+  `registrationNumber` VARCHAR(255) NOT NULL,
+  `id` CHAR(36) BINARY NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_bin;
+
+Express server is running on port 3000 🚀

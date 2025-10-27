@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+
+    {{favicon}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW296DBY4D"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XW296DBY4D');
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    {{css}}
+
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="author" content="{{author}}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{imageUrl}}">
+    <meta property="og:url" content="{{url}}">
+    <meta property="og:site_name" content="{{siteName}}">
+    <meta property="og:locale" content="{{language}}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="{{imageUrl}}">
+    <meta name="twitter:url" content="{{url}}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="startPage">
+        <div class="hero">
+            <div class="heroInner">
+                <div class="tag icon">
+                    <i class="bi bi-stars"></i>
+                    Read as "JavaScript 2.0"
+                </div>
+
+                <h1><span class="gradient">JS20</span> framework</h1>
+                <h2>The missing standard for full-stack TypeScript apps.</h2>
+
+                <p class="subline">
+                    Build TypeScript backends and SDKs with up to<br/><span class="gradient"><a class="codeReduction" href="/calculation"></a> less code</span>. Faster, cheaper & easier to maintain.
+                </p>
+
+                <div class="buttonWrapper">
+                    <a href="/docs">
+                        <button class="primary">
+                            <i class="bi bi-download"></i>
+                            Get started
+                            <i class="bi bi-arrow-right-short large"></i>
+                        </button>
+                    </a>
+
+                    <a href="https://github.com/js20org" target="_blank">
+                        <button class="secondary">
+                            <i class="bi bi-github"></i>
+                            View on GitHub
+                        </button>
+                    </a>
+                </div>
+
+                <div class="codeWrapper">
+                    <div class="section">
+                        <h3>Backend code</h3>
+<pre><code>// Auth, ACL, Validation, Sanitation,
+// ORM & more out of the box
+app.addEndpoint({
+    path: '/car',
+    method: 'POST',
+    inputSchema: sCar,
+    outputSchema: Schema.withInstance(sCar),
+    isLoggedIn: true,
+    run: async (system, input) => {
+        return system.models.car.create(input);
+    }
+});
+</pre></code>
+</div>
+<div class="section">
+    <i class="bi bi-arrow-right-square-fill large"></i>
+    <p>Generates</p>
+</div>
+<div class="section">
+    <h3><i class="bi bi-stars"></i> Frontend code</h3>
+<pre><code>// Talk to API using generated async
+// functions (100% type-safe)
+const newCar = await createCar({
+    isLeased: false,
+    registrationNumber: 'ABC123'
+});
+
+console.log(newCar.id);
+</code></pre>
+                    </div>
+                </div>
+                <div class="sectionSmallText">
+                    Reduce code by up to <a class="codeReduction" href="/calculation"></a> • Generate the frontend SDK • Save time & cost on dev
+                </div>
+            </div>
+        </div>
+
+        <div class="startPageSection secondary">
+            <h2>Most backends contain repetitive code</h2>
+            <p>With JS20 you can eliminate boilerplate code and focus on business logic. This means faster development, less testing and easier maintenance.</p>
+
+            <div class="comparison">
+                <div class="header">
+                    <div class="countWrapper">
+                        <div class="count tag icon">
+                            <span>Example</span>
+                            <span id="comparisonCount"></span>
+                            <span>of</span>
+                            <span id="comparisonTotal"></span>
+                        </div>
+                    </div>
+                    <h3 id="comparisonTitle"></h3>
+                    <div class="comparisonNavigation">
+                        <button id="comparisonPrevious"><i class="bi bi-chevron-left"></i></button>
+                        <button id="comparisonNext"><i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="code">
+                    <div class="codeBlock">
+                        <h4><i class="bi bi-x large gray"></i> Traditional approach</h4>
+                        <p id="comparisonBeforeLabel"></p>
+                        <pre><code id="comparisonBeforeCode" class="language-typescript"></code></pre>
+                    </div>
+                    <div class="codeBlock">
+                        <h4><i class="bi bi-check large"></i> JS20 backend</h4>
+                        <p id="comparisonAfterLabel"></p>
+                        <pre><code id="comparisonAfterCode" class="language-typescript"></code></pre>
+                        <div class="reduction">
+                            <div class="reductionInner">
+                                <span id="comparisonReduction" class="gradient"></span><p>code reduction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="startPageSection">
+            <h2>Everything you need, built in</h2>
+            <p>JS20 provides a complete, production-ready framework that scales from prototype to<br/>millions of users. Start building your next app <a href="/docs">now</a>.</p>
+
+            <div class="featuresList">
+                <div class="feature">
+                    <i class="bi bi-list-stars large"></i>
+                    <h3>Specify instead of code</h3>
+                    <p>Focus more on <b>specifying</b> what you need, less on how to implement it—enabling automation and advanced code generation.</p>
+                </div>
+                <div class="feature">
+                    <i class="bi bi-rocket-takeoff large"></i>
+                    <h3>Production Ready</h3>
+                    <p>Built-in authentication, authorization, validation, and security best practices. Deploy with confidence from day one.</p>
+                </div>
+                <div class="feature">
+                    <i class="bi bi-puzzle large"></i>
+                    <h3>Rigid, yet flexible</h3>
+                    <p>JS20 is strict & rigid, but still offers full flexibility. Replace & modify any component. Use your own database, auth, or validation. Run on any cloud or web server.</p>
+                </div>
+                <div class="feature">
+                    <i class="bi bi-shield-lock large"></i>
+                    <h3>Security & Validation</h3>
+                    <p>Schema-driven validation, sanitation, and conversion with type-safe APIs that prevent injection and data corruption.</p>
+                </div>
+                <div class="feature">
+                    <i class="bi bi-magic large"></i>
+                    <h3>Auto-Generated Frontend SDK</h3>
+                    <p>Define backend endpoints once to get versioned, typed frontend APIs automatically—no client code or docs required.</p>
+                </div>
+                <div class="feature">
+                    <i class="bi bi-cpu large"></i>
+                    <h3>Optimized for AI</h3>
+                    <p>Writing less code makes it easier for AI to build your backend, cutting token costs and boosting quality.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="startPageSection secondary">
+            <h2>Ready for the AI era</h2>
+            <p class="limitWidth">Modular, high-level code with minimal boilerplate is optimal for generative AI to interpret and build upon. Less code leads to higher quality, lower costs, and greater efficiency.</p>
+            <div class="checklist">
+                <h4 class="description">
+                    <i class="bi bi-cpu large"></i>
+                    AI coding becomes more powerful by:
+                </h4>
+                <div class="item">
+                    <i class="bi bi-check2-circle large"></i>
+                    <div class="text">
+                        Reduce code base by up to <a class="codeReduction" href="/calculation"></a>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="bi bi-check2-circle large"></i>
+                    <div class="text">
+                        Shorter queries, means lowered token costs
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="bi bi-check2-circle large"></i>
+                    <div class="text">
+                        Increased quality - let AI focus on business logic, not implementation details
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="bi bi-check2-circle large"></i>
+                    <div class="text">
+                        Easier to do high-level system changes, perfect for prompt instructions
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="bi bi-check2-circle large"></i>
+                    <div class="text">
+                        Less environmental impact - less tokens means less energy usage
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="startPageSection">
+            <h2>Made for critical systems</h2>
+            <p>
+                Achieve greater readability through repeatable, validated chained actions that streamline business logic. With step-by-step validation, you can build critical systems with confidence.
+            </p>
+<pre><code class="language-typescript">async function transferCarOwnership({ run }, input) {
+    const taxDebt = await run(getTaxes, input);
+    await run(verifyNoUnpaidTaxes, taxDebt);
+
+    const oldOwner = await run(getOwner, input);
+    await run(verifyTransferApproved, { ...input, oldOwner });
+    
+    const updated = await run(updateOwner, input);
+    return await run(getTransferCertificate, updated);
+}</code></pre>
+            <div class="sectionSmallText">
+                Input & output validated at every step • Automatic roll-back on error
+            </div>
+        </div>
+
+        <div class="startPageSection secondary">
+            <h2>Ready for a frontend integration?</h2>
+            <p>
+                Because of JS20 ability to <b>specify</b> code, we can easily generate docs & versioned SDK for your frontend integration. No need to keep client SDK in sync with backend changes - generate it <i class="bi bi-stars"></i>
+            </p>
+            <div class="columnWrapper">
+                <div class="column">
+                    <pre><code class="language-typescript">// Generate frontend SDK
+await app.generate(options);</code></pre>
+                    <p><i class="bi bi-stars"></i> Use app.generate() to automatically create an SDK based on your schemas, models & endpoints.</p>
+                </div>
+                <div class="column">
+                    <div class="consoleImage">
+                        <img src="/public/images/generate.png" alt="Console output showing generate output">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="heroInner">
+                <h1>Let's get <span class="gradient">started</span></h1>
+                <h2>Build your first application.</h2>
+
+                <div class="buttonWrapper">
+                    <a href="/docs">
+                        <button class="primary">
+                            <i class="bi bi-download"></i>
+                            Get started
+                            <i class="bi bi-arrow-right-short large"></i>
+                        </button>
+                    </a>
+
+                    <a href="https://github.com/js20org" target="_blank">
+                        <button class="secondary">
+                            <i class="bi bi-github"></i>
+                            View on GitHub
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookieBanner" style="display: none;">
+        <div class="cookieContent">
+            <p>
+                We use cookies to improve your experience on our site. See our <a href="/privacy">Privacy Policy</a> for more information.
+            </p>
+            <button id="acceptCookies" class="cookieButton">Close</button>
+        </div>
+    </div>
+    
+    <footer>
+        Made with <i class="bi bi-heart-fill red"></i> by <a href="https://github.com/r-jsv" target="_blank">Robin</a>
+        <br/>
+        <br/>
+        <a href="/docs">Docs</a> •
+        <a href="https://github.com/js20org" target="_blank">GitHub</a> •
+        <a href="/calculation">Code reduction</a> •
+        <a href="/license">License</a> •
+        <a href="/privacy">Privacy Policy</a>
+    </footer>
+    {{js}}
+</body>
+</html>

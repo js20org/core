@@ -1,0 +1,18 @@
+{
+    "hello-world": [
+        {
+            "method": "GET",
+            "path": "/"
+        }
+    ],
+    "adding-endpoint": [
+        {
+            "method": "POST",
+            "path": "/sum",
+            "body": {
+                "a": 5,
+                "b": 10
+            }
+        }
+    ]
+}

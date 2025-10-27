@@ -1,0 +1,23 @@
+
+---------------------
+
+🚀 Generated code to:
+ - ./dist/frontend.ts
+
+🧩 Functions:
+ - getRoot() -> Message                                            GET      /
+ - getBooks() -> (Book & Instance)[]                               GET      /book
+ - getBook(input: IdInput) -> Book & Instance                      GET      /book/:id
+ - createBook(input: Book) -> Book & Instance                      POST     /book
+ - updateBook(input: Book & IdInput) -> Book & Instance            PUT      /book/:id
+ - deleteBook(input: IdInput) -> Book & Instance                   DELETE   /book/:id
+ - getReviews() -> (Instance & Review)[]                           GET      /review
+ - getReview(input: IdInput) -> Instance & Review                  GET      /review/:id
+ - createReview(input: Review) -> Instance & Review                POST     /review
+ - updateReview(input: Review & IdInput) -> Instance & Review      PUT      /review/:id
+ - deleteReview(input: IdInput) -> Instance & Review               DELETE   /review/:id
+
+---------------------
+
+✓ MySQL connected
+Express server is running on port 3000 🚀
