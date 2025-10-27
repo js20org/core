@@ -363,7 +363,7 @@ export class DefaultTypescriptCompiler implements TypescriptCompiler {
         });
 
         const sourceFiles = this.program.getSourceFiles();
-        const isTypesShared = (fileName: string) => fileName.endsWith('types-shared.ts');
+        const isTypesShared = (fileName: string) => fileName.endsWith('types-shared.ts') || fileName.endsWith('types-shared.d.ts');
 
         this.ownFiles = sourceFiles.filter(
             (sourceFile) => isTypesShared(sourceFile.fileName) || !sourceFile.fileName.includes('node_modules')

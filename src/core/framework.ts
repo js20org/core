@@ -215,6 +215,7 @@ export class App<M extends ModelObject<M>> {
         const code = await getFrontendCode(config, app, logger);
 
         for (const output of config.outputs) {
+            fs.mkdirSync(path.dirname(output), { recursive: true });
             fs.writeFileSync(path.resolve(output), code);
         }
 

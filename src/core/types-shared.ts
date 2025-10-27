@@ -1,4 +1,7 @@
-/* These files are compiled in users generation */
+/*
+These files are included in the generated frontend clients,
+so avoid adding any backend-specific code here.
+*/
 import { sDate, sString } from '@js20/schema';
 
 export interface Instance {

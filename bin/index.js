@@ -27,6 +27,7 @@ function getFilePaths(file) {
     return { sourcePath, targetPath };
 }
 
+console.log('');
 console.log('Generating @js20 project...');
 
 directories.forEach(dir => {
@@ -52,3 +53,7 @@ files.forEach(file => {
 console.log('');
 console.log('✓ Project generation complete!');
 console.log('Check README.md for next steps.');
+console.log('');
+console.log('Quick start:');
+console.log('- npm run i');
+console.log('- npm run start');
