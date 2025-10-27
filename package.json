@@ -8,11 +8,16 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
+        "bin",
+        "boilerplate",
         "dist",
         "package.json",
         "README.md",
         "LICENSE"
     ],
+    "bin": {
+        "js20": "bin/index.js"
+    },
     "scripts": {
         "predocs:build": "rimraf ./dist/docs && rimraf ./dist/website",
         "docs:build:js": "node ./dist/docs/bundle.js",
