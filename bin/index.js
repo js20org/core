@@ -55,5 +55,5 @@ console.log('✓ Project generation complete!');
 console.log('Check README.md for next steps.');
 console.log('');
 console.log('Quick start:');
-console.log('- npm run i');
+console.log('- npm i');
 console.log('- npm run start');

@@ -9,7 +9,7 @@ $$ codeQuote
 In your backend run:
 
 ```
-npm install @js20/core
+npx @js20/core
 ```
 
 ## Features
