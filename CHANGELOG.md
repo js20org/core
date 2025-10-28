@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/js20org/core/compare/v1.7.0...v1.7.1) (2025-10-28)
+
+
+### Bug Fixes
+
+* mistake on start page, added update() function ([17450e3](https://github.com/js20org/core/commit/17450e32fbb2df641f43e78e851af62f0e67d856))
+
 # [1.7.0](https://github.com/js20org/core/compare/v1.6.0...v1.7.0) (2025-10-28)
 
 
