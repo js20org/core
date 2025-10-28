@@ -1,17 +1,17 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { BaseSystem, Endpoint, EndpointMethod, WebServer, WebServerConfig } from '../../../src/core/types';
+import { BaseSystem, Endpoint, EndpointMethod, WebServer, WebServerConfig, WebServerType } from '../../../src/core/types';
 import { ExpressServer } from '../../../src/core/web-server/instances/express-server';
 import { getComputedEndpoints } from '../../../src/core/utils/endpoints';
 import { sAny } from '@js20/schema';
 import { Request, Response } from 'express';
 import { globalHandleError } from '../../../src/core/utils/error';
 
-const config: WebServerConfig = {
-    port: 3000,
-};
-
 const servers: WebServer[] = [
-    new ExpressServer(config)
+    new ExpressServer({
+        port: 3000,
+        type: WebServerType.express,
+        allowedOrigins: [],
+    })
 ];
 
 function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, any> {
@@ -74,14 +74,14 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('GET endpoint is registered', async () => {
-        const response = await fetch(`http://localhost:${config.port}/get?id=1`);
+        const response = await fetch(`http://localhost:3000/get?id=1`);
 
         expect(response.status).toBe(200);
         expect(await response.json()).toEqual({ id: '1' });
     });
 
     it('POST endpoint is registered', async () => {
-        const response = await fetch(`http://localhost:${config.port}/post`, {
+        const response = await fetch(`http://localhost:3000/post`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('PUT endpoint is registered', async () => {
-        const response = await fetch(`http://localhost:${config.port}/put/a`, {
+        const response = await fetch(`http://localhost:3000/put/a`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('DELETE endpoint is registered', async () => {
-        const response = await fetch(`http://localhost:${config.port}/delete`, {
+        const response = await fetch(`http://localhost:3000/delete`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('headers are parsed correctly', async () => {
-        const response = await fetch(`http://localhost:${config.port}/headers`, {
+        const response = await fetch(`http://localhost:3000/headers`, {
             method: 'GET',
             headers: {
                 'X-Custom-Header': 'CustomValue',
@@ -133,7 +133,7 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('regexp endpoint is registered', async () => {
-        const response = await fetch(`http://localhost:${config.port}/test/some/path`, {
+        const response = await fetch(`http://localhost:3000/test/some/path`, {
             method: 'POST',
         });
 
@@ -142,7 +142,7 @@ describe.each(servers)('%s', async (server) => {
     });
 
     it('handles endpoint errors gracefully', async () => {
-        const response = await fetch(`http://localhost:${config.port}/error`, {
+        const response = await fetch(`http://localhost:3000/error`, {
             method: 'GET',
         });
 

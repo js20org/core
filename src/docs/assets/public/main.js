@@ -69,6 +69,7 @@ const navigation = [
             { href: "/docs-actions", text: "Chained actions" },
             { href: "/docs-crud", text: "Automatic CRUD" },
             { href: "/docs-errors", text: "Error handling" },
+            { href: "/docs-cors", text: "CORS" },
             { href: "/docs-bypass", text: "Bypass ACL" }
         ]
     },

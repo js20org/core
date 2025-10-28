@@ -1,17 +1,48 @@
 import Express from 'express';
-import type { AppData, ComputedEndpoint, RequestHandlerProps, WebServer, WebServerConfig } from '../../types.js';
+import type { AppData, ComputedEndpoint, NoUndefined, RequestHandlerProps, WebServer, WebServerConfig } from '../../types.js';
 import { getExpressHeaders, getExpressRequestInput } from '../../utils/express.js';
 import { handleRequest } from '../../request-handler/request-handler.js';
+import type { CorsOptions } from 'cors';
+import cors from 'cors';
 
 export class ExpressServer implements WebServer {
     private app: Express.Application;
-    private config: WebServerConfig;
+    private config: NoUndefined<WebServerConfig>;
     private server: any = null;
 
-    constructor(config: WebServerConfig) {
+    constructor(config: NoUndefined<WebServerConfig>) {
         this.app = Express();
-        this.app.use(Express.json());
         this.config = config;
+        this.addCors(config);
+        this.app.use(Express.json());
+    }
+
+    private addCors(config: NoUndefined<WebServerConfig>) {
+        const hasSetCors = config.allowedOrigins.length > 0;
+        const methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'];
+
+        if (hasSetCors) {
+            const corsOptions: CorsOptions = {
+                origin: function (origin, callback) {
+                    const isAllowed = origin && config.allowedOrigins.includes(origin);
+
+                    if (isAllowed) {
+                        callback(null, true);
+                    } else {
+                        callback(new Error('Not allowed by CORS'));
+                    }
+                },
+                methods,
+            };
+
+            this.app.use(cors(corsOptions));
+        } else {
+            // Allow all origins
+            this.app.use(cors({
+                origin: '*',
+                methods,
+            }));
+        }
     }
 
     private registerEndpoint(props: RequestHandlerProps, computed: ComputedEndpoint) {

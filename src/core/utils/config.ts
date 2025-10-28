@@ -8,6 +8,7 @@ const defaultConfig: AppConfig = {
     server: {
         type: WebServerType.express,
         port: 3000,
+        allowedOrigins: [],
     },
 }
 //</DefaultConfig>
@@ -19,6 +20,7 @@ export function getInternalConfig(config: InputConfig = {}): InternalConfig {
         server: {
             type: server.type ?? defaultConfig.server.type,
             port: server.port ?? defaultConfig.server.port,
+            allowedOrigins: server.allowedOrigins ?? defaultConfig.server.allowedOrigins,
         },
     };
 }

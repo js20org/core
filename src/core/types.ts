@@ -40,10 +40,12 @@ export type ErrorHandler = (error: any) => Promise<ErrorResponse>;
  * Configuration for the web server
  * @param type The type of web server to use, defaults to 'express'
  * @param port The port to run the web server on, defaults to 3000 or process.env.PORT
+ * @param allowedOrigins A list of allowed origins for CORS, if not provided, CORS is disabled
  */
 export interface WebServerConfig {
     type?: WebServerType;
     port?: number;
+    allowedOrigins?: string[];
 }
 
 /**
@@ -57,7 +59,7 @@ export enum WebServerType {
 
 // ---------------- Internal Config ----------------
 
-type NoUndefined<T> = {
+export type NoUndefined<T> = {
     [K in keyof T]-?: Exclude<T[K], undefined> extends object
         ? NoUndefined<Exclude<T[K], undefined>>
         : Exclude<T[K], undefined>;
