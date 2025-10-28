@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/js20org/core/compare/v1.5.1...v1.6.0) (2025-10-28)
+
+
+### Bug Fixes
+
+* invalid metadata ([cea50e9](https://github.com/js20org/core/commit/cea50e9212f8249cfe531dc0e5b82bcd3982b40d))
+
+
+### Features
+
+* icon ([71bc9b8](https://github.com/js20org/core/commit/71bc9b8a10f899af5a1e40c6a2f07ae51bdb6cf2))
+
 ## [1.5.1](https://github.com/js20org/core/compare/v1.5.0...v1.5.1) (2025-10-28)
 
 
