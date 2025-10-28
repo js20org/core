@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/js20org/core/compare/v1.4.0...v1.5.0) (2025-10-28)
+
+
+### Features
+
+* meta information and image ([cb9c8c4](https://github.com/js20org/core/commit/cb9c8c4c83353609eefb0da71109de972104ae66))
+
 # [1.4.0](https://github.com/js20org/core/compare/v1.3.0...v1.4.0) (2025-10-27)
 
 
