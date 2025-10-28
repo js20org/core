@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/js20org/core/compare/v1.5.0...v1.5.1) (2025-10-28)
+
+
+### Bug Fixes
+
+* favicon improvement ([4581e70](https://github.com/js20org/core/commit/4581e703f8c38abeb73624c6f2594d242415ff62))
+
 # [1.5.0](https://github.com/js20org/core/compare/v1.4.0...v1.5.0) (2025-10-28)
 
 
