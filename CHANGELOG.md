@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/js20org/core/compare/v1.6.0...v1.7.0) (2025-10-28)
+
+
+### Bug Fixes
+
+* clarify note on cors ([b0399c4](https://github.com/js20org/core/commit/b0399c42440c0956b31d7a707d757b5b194c8080))
+
+
+### Features
+
+* added allowedOrigins and CORS, closes [#2](https://github.com/js20org/core/issues/2) ([96ea7be](https://github.com/js20org/core/commit/96ea7be280ae6247ba9b1c2306ceaee2cf018989))
+
 # [1.6.0](https://github.com/js20org/core/compare/v1.5.1...v1.6.0) (2025-10-28)
 
 
