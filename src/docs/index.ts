@@ -271,8 +271,8 @@ const importCommand: RawArgsCommand = {
 
 const outputDirectoryPath = path.resolve(__dirname, '../website');
 const website: Website = {
-    url: 'https://www.js20.com',
-    name: 'js20.com',
+    url: 'https://www.js20.dev',
+    name: 'js20.dev',
     sitePath: path.resolve(__dirname, '../../src/docs/site'),
     publicPath: path.resolve(__dirname, '../../src/docs/assets/public'),
     outputDirectoryPath,
@@ -288,7 +288,7 @@ const website: Website = {
         description: 'Build TypeScript backends and SDKs with up to 90% less code. Faster, cheaper & easier to maintain. Ready for the AI era, less code = less tokens & reduced costs.',
         keywords: 'backend, framework, AI',
         author: 'r-jsv',
-        imageUrl: 'https://www.js20.com/public/images/ogimage.png',
+        imageUrl: 'https://www.js20.dev/public/images/ogimage.png',
         language: 'en_US',
     },
     commands: [importCommand, sizeCommand, codeQuoteCommand],
