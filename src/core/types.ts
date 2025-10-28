@@ -40,7 +40,7 @@ export type ErrorHandler = (error: any) => Promise<ErrorResponse>;
  * Configuration for the web server
  * @param type The type of web server to use, defaults to 'express'
  * @param port The port to run the web server on, defaults to 3000 or process.env.PORT
- * @param allowedOrigins A list of allowed origins for CORS, if not provided, CORS is disabled
+ * @param allowedOrigins A list of allowed origins for CORS, if not provided, CORS is set to allow all origins
  */
 export interface WebServerConfig {
     type?: WebServerType;
