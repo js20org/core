@@ -1,4 +1,4 @@
-import { Instance } from '../../src/core';
+import { IdInput, Instance } from '../../src/core';
 import { ModelFactory } from '../../src/core/types';
 
 const instance: Instance = {
@@ -27,11 +27,11 @@ export class MockModelFactory<T> implements ModelFactory<T> {
     async create(data: T) {
         return { ...instance, ...data };
     }
-    async update(next: T & Instance, data: Partial<T>) {
-        return { ...next, ...data };
-    }
     async updateById(id: string, data: Partial<T>) {
         return { ...instance, ...this.defaultValue, ...data, id };
+    }
+    async update({ id, ...rest}: IdInput & Partial<T>) {
+        return this.updateById(id, rest as Partial<T>);
     }
     async deleteById(id: string) {
         return { ...instance, ...this.defaultValue, id };

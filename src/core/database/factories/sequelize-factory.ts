@@ -1,7 +1,7 @@
 import { Model, Sequelize, type WhereOptions, Transaction } from 'sequelize';
 import { getValidatedSchema, sString, validateBySchema, ValidatedSchema } from '@js20/schema';
 import type { ModelFactory, User } from '../../types.js';
-import { type Instance, sIdInput, sInstance } from '../../types-shared.js';
+import { type IdInput, type Instance, sIdInput, sInstance } from '../../types-shared.js';
 import { Schema } from '../../utils/schema.js';
 
 type SequelizeModel = ReturnType<Sequelize['define']>;
@@ -190,6 +190,10 @@ export class SequelizeFactory<T> implements ModelFactory<T> {
         const newInstance = await this.getById(existing.id);
         this.validateItem(newInstance);
         return newInstance;
+    }
+
+    async update({ id, ...rest }: IdInput & Partial<T>): Promise<T & Instance> {
+        return this.updateById(id, rest as Partial<T>);
     }
 
     async tryDeleteById(id: string): Promise<(T & Instance) | null> {

@@ -240,6 +240,7 @@ export interface ModelFactory<T> {
     tryGetById(id: string, where?: WhereOptions<T>): Promise<(T & Instance) | null>;
     create(data: T): Promise<T & Instance>;
     updateById(id: string, data: Partial<T>): Promise<T & Instance>;
+    update(input: IdInput & Partial<T>): Promise<T & Instance>;
     deleteById(id: string): Promise<T & Instance>;
     tryDeleteById(id: string): Promise<T & Instance | null>;
     count(where?: WhereOptions<T>): Promise<number>;

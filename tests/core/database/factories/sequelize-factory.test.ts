@@ -905,6 +905,33 @@ describe('updateById', () => {
     });
 });
 
+describe('update', () => {
+    it('correctly updates an item in the database', async () => {
+        const { factory } = await getTestData();
+        
+        const createdItem = await factory.create({
+            stringValue: 'from-start',
+            booleanValue: false,
+        });
+
+        const updatedItem = await factory.update({
+            stringValue: 'updated-value',
+            booleanValue: true,
+            id: createdItem.id,
+        });
+
+        expect(getWithoutMeta([updatedItem])).toEqual([{
+            stringValue: 'updated-value',
+            booleanValue: true,
+        }]);
+        expect(updatedItem.ownerId).toBeUndefined();
+        assertMeta([updatedItem], false);
+
+        const fetchedItem = await factory.getById(updatedItem.id);
+        expect(fetchedItem).toEqual(updatedItem);
+    });
+});
+
 describe('tryDeleteById', () => {
     it('deletes existing item in the database', async () => {
         const { factory } = await getTestData();

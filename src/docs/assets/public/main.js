@@ -179,24 +179,25 @@ const codeExamples = [
         title: 'API handler logic',
         beforeLabel: 'Manually handle Auth, ACL, validation & database operations',
         afterLabel: 'One line of code, JS20 handles everything under the hood',
-        before: `async function updateCar(req) {
-    verifyLoggedIn(req);
+        before: `async function updateCar(request) {
+    const user = await getUserSession(request);
+    if (!user) throw new Error('Not logged in');
 
-    const id = req.params.id;
+    const id = request.params.id;
     if (!id) throw new Error('ID is required');
 
-    const input = validateAndSanitize(req.body, carSchema);
+    const input = validateAndSanitize(request.body, carSchema);
     const existing = await prisma.car.findUnique({ where: {
         id,
-        ownerId: req.user.id
+        ownerId: user.id
     }});
 
     if (!existing) throw new Error('Car not found');
-    verifyACL(req.user, 'update', existing);
+    verifyACL(user, 'update', existing);
 
     const newCar = await prisma.car.update({ where: {
         id,
-        ownerId: req.user.id,
+        ownerId: user.id,
     }, data: {
         ...existing,
         ...input,
@@ -207,7 +208,7 @@ const codeExamples = [
     return newCar;
 }`,
         after: `async function run(system, input) {
-    return system.models.car.create(input);
+    return system.models.car.update(input);
 }`,
     },
     {
