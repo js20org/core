@@ -1,6 +1,6 @@
 # Example app
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Example App
+$$ meta:description Build a simple example app using JS20 framework.
 
 Let's build a small app called **BookMate** — a simple backend where users can track the books they read and leave reviews.
 

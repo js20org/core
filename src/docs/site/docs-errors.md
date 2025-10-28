@@ -1,6 +1,6 @@
 # Error handling
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Errors
+$$ meta:description Learn how JS20 handles errors and how to implement custom error handling.
 
 JS20 applies automatic error handling inside the run functions of the endpoints. At any time you can throw an error and the user-facing response will have status code 500 with your error message, or a generic "Unknown error" message.
 

@@ -1,6 +1,6 @@
 # Patch & partial schemas
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Partial Schemas
+$$ meta:description Learn how to use partial schemas for patch updates in JS20.
 
 The **updateById()** function inside **system.models.[your_model].updateById()** supports partial schemas and patch updates.
 

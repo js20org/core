@@ -1,6 +1,6 @@
 # Project Structure
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Project Structure
+$$ meta:description Recommended project structure for JS20 applications.
 
 We recommend using **TypeScript ESM builds** with the following project structure:
 

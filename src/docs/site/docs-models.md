@@ -1,6 +1,6 @@
 # Register models
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Register Models
+$$ meta:description Learn how to register data models in JS20 framework.
 
 Here's how to register models.
 

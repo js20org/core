@@ -1,6 +1,6 @@
 # Logged-in endpoints
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Logged-in Endpoints
+$$ meta:description Learn how to create endpoints that require user authentication in JS20.
 
 Create an endpoint that is only available to logged-in users.
 

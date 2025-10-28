@@ -1,7 +1,7 @@
 # Code reduction calculation
 $$ template:plain
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Code reduction calculation
+$$ meta:description How we calculate code reduction claims for JS20
 
 Here you can find information about how the claims related to code reductions are calculated. We can not guarantee your code reduction will be exactly as calculated here, but hope you will see a large reduction in your codebase by using JS20.
 

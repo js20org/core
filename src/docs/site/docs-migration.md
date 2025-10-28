@@ -1,6 +1,6 @@
 # Database Migration
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Database Migration
+$$ meta:description Learn how to migrate your database schema in JS20.
 
 ## Initialize tables automatically
 

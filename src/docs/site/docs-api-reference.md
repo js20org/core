@@ -1,7 +1,7 @@
 # API Reference
 
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - API Reference
+$$ meta:description Comprehensive API reference for JS20 framework.
 
 ## AppConfig
 When running **new App(config)**, you can pass a config object to customize the app behavior. All config options are optional.

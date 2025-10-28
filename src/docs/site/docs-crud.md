@@ -1,6 +1,6 @@
 # CRUD
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - CRUD
+$$ meta:description Learn how to create CRUD endpoints for your models in JS20.
 
 The fastest way to create endpoints for a model is to use the CRUD helper function. One line of code can give you all 5 REST endpoints for a model.
 

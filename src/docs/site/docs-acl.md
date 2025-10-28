@@ -1,6 +1,6 @@
 # Use models & ACL
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Use models & ACL
+$$ meta:description Learn how to use models with built-in Access Control Logic (ACL) in JS20.
 
 > **Access Control Logic (ACL)** — the rules and reasoning that determine who is allowed to access which resources and under what conditions.
 

@@ -1,6 +1,6 @@
 # Transactions
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Transactions
+$$ meta:description Learn how database transactions work in JS20 framework.
 
 The whole **run()** function in an Endpoint action is using a **single DB transaction** (one transaction per database you register). When you call any model methods inside an Endpoint, or call other actions recursively, they all run within the same transaction. If *anything* fails - *everything* is rolled back - and the API returns a 500 error.
 

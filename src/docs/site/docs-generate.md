@@ -1,7 +1,7 @@
 # Generate frontend
 
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Generate frontend
+$$ meta:description Learn how to generate frontend SDK code in JS20.
 
 By running generate() you can create the full SDK based on your backend code. This will create helper functions like:
 

@@ -1,6 +1,6 @@
 # Authentication
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Authentication
+$$ meta:description Learn how to implement user authentication in JS20.
 
 Add an authenticator to enable user registration and authentication.
 

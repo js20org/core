@@ -1,6 +1,6 @@
 # Config & Web server
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Config & Web server
+$$ meta:description Learn how to configure the web server in JS20 framework.
 
 JS20 accepts a config property that provides a range of useful settings.
 

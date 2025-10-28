@@ -1,6 +1,6 @@
 # Schemas
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Schemas
+$$ meta:description Learn about schemas in JS20 for data validation and structure.
 
 Schemas are used to verify your data structures at runtime.
 

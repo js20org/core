@@ -1,5 +1,5 @@
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Documentation
+$$ meta:description Documentation for JS20 - Build TypeScript backends and SDKs with up to 90% less code. Faster, cheaper & easier to maintain. Ready for the AI era, less code = less tokens & reduced costs.
 
 **JS20** - read as "JavaScript 2.0" - is a standard for writing backend applications in TypeScript that automatically generates the frontend SDK. The goal of JS20 is to do anything that is repetitive for you: Auth, ACL, Validation, Sanitation, ORM / queries, and more - so you can focus on only the business logic.
 

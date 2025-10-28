@@ -1,6 +1,6 @@
 # Bypass ACL
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Bypass ACL
+$$ meta:description Learn how to bypass Access Control Logic (ACL) in JS20 when needed.
 
 Sometimes you need to bypass ACL checks. For example, if you need an action that calculates reviews for a book based on reviews from **all users** and not just the logged-in user.
 

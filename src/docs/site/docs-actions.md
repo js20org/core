@@ -1,6 +1,6 @@
 # Chained actions
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Chained Actions
+$$ meta:description Learn how to create and use actions in JS20.
 
 Actions are reusable code blocks that can be used within endpoints for repeating business logic. An action takes an input, validates it by the inputSchema, runs the action, then validates the output by the outputSchema & finally returns the output.
 

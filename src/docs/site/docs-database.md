@@ -1,6 +1,6 @@
 # Setup Database
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Setup Database
+$$ meta:description Learn how to connect your application to a database in JS20.
 
 Connect the application to any databases you intend to use.
 

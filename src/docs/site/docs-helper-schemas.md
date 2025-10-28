@@ -1,6 +1,6 @@
 # Helper schemas
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Helper Schemas
+$$ meta:description Learn about helper schemas in JS20 for combining and extending schemas.
 
 Schemas are just objects, so you can join them together like this:
 

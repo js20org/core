@@ -1,6 +1,6 @@
 # Endpoints
-$$ meta:title JS20 - User Guide
-$$ meta:description JS20
+$$ meta:title JS20 - Endpoints
+$$ meta:description Learn how to create API endpoints in JS20.
 
 Here's how to define an endpoint.
 
