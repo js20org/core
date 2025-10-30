@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/js20org/core/compare/v1.10.0...v1.10.1) (2025-10-30)
+
+
+### Bug Fixes
+
+* remove beta information ([d7bf8cb](https://github.com/js20org/core/commit/d7bf8cb5e3e2401771b99e03be3ddc4bbe2b40af))
+
 # [1.10.0](https://github.com/js20org/core/compare/v1.9.0...v1.10.0) (2025-10-30)
 
 
