@@ -80,6 +80,7 @@ export class MySqlDatabase extends BaseDatabase<Pool> {
     }
 
     private getSequelizeFromMysqlOptions(connectionOptions: MysqlConnectOptions, options: DatabaseOptions) {
+        //<sqlinit>
         const sequelizeOptions: SequelizeOptions = {
             host: connectionOptions.host,
             port: connectionOptions.port,
@@ -99,6 +100,7 @@ export class MySqlDatabase extends BaseDatabase<Pool> {
             connectionOptions.password,
             sequelizeOptions
         );
+        //</sqlinit>
     }
 
     async connect(): Promise<void> {

@@ -71,6 +71,7 @@ const navigation = [
             { href: "/docs-errors", text: "Error handling" },
             { href: "/docs-auth-emails", text: "Auth emails" },
             { href: "/docs-security", text: "Security & Prod checklist" },
+            { href: "/docs-deployment", text: "Deployment guide" },
             { href: "/docs-bypass", text: "Bypass ACL" }
         ]
     },
