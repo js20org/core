@@ -21,7 +21,7 @@ function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, a
 async function getWebServer(allowedOrigins: string[], isProduction = false) {
     const webServer = new ExpressServer();
 
-    webServer.initialize({
+    await webServer.initialize({
         databases: [],
         handleError: async (e) => globalHandleError(e),
     }, {
