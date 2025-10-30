@@ -1,3 +1,11 @@
+# [1.10.0](https://github.com/js20org/core/compare/v1.9.0...v1.10.0) (2025-10-30)
+
+
+### Features
+
+* deployment guide, closes [#7](https://github.com/js20org/core/issues/7) ([9dd753f](https://github.com/js20org/core/commit/9dd753fdc4a94474629accc5bfacf739d59f6539))
+* remove env from boilerplate, add link to auth docs ([d828e9a](https://github.com/js20org/core/commit/d828e9a8a338e2479bb301a5c88cb5d99ba0d409))
+
 # [1.9.0](https://github.com/js20org/core/compare/v1.8.0...v1.9.0) (2025-10-30)
 
 
