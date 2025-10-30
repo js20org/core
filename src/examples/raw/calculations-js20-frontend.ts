@@ -1,7 +1,9 @@
 import { App } from '@js20/core';
 import path from 'path';
 
-const app = new App();
+const app = new App({
+    isProduction: false,
+});
 
 async function run() {
 // <include>

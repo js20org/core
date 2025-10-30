@@ -223,7 +223,7 @@ export interface Database<Pool> extends Plugin {
  */
 export interface AuthConfig {
     baseURL?: string;
-    secret: string;
+    secret?: string;
     useEmailPassword?: boolean;
     expiresIn?: number;
     cookie?: CookieConfig;

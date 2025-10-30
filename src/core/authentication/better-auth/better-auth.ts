@@ -187,7 +187,7 @@ function getSafeConfig(config?: AuthConfig): NoUndefined<AuthConfig> {
         baseURL: config?.baseURL || 'http://localhost:3000',
         secret: config?.secret || 'test-secret',
         cookie: {
-            domain: config?.cookie?.domain || 'yourapp.com',
+            domain: config?.cookie?.domain || 'http://localhost',
             path: config?.cookie?.path || '/',
         },
         expiresIn: config?.expiresIn || 1000 * 60 * 60 * 24 * 7, // 7 days
