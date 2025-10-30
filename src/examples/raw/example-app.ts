@@ -2,7 +2,7 @@
 import path from 'path';
 import * as dotenv from 'dotenv';
 
-import { App, Model, MysqlConnectOptions, MySqlDatabase, BetterAuth, Schema, sMessage } from '@js20/core'
+import { App, type Model, type MysqlConnectOptions, MySqlDatabase, BetterAuth, Schema, sMessage } from '@js20/core'
 import { sString, sBoolean, sInteger, sEnum, sNumber } from '@js20/schema'
 
 dotenv.config({ quiet: true });

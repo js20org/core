@@ -1,5 +1,5 @@
 import { sDate, sEnum, sInteger, sString } from '@js20/schema';
-import { Model, App, sMessage, MySqlDatabase, BetterAuth } from '@js20/core';
+import { type Model, App, sMessage, MySqlDatabase, BetterAuth } from '@js20/core';
 import { Op } from 'sequelize';
 
 enum RoomType {

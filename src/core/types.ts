@@ -227,6 +227,23 @@ export interface AuthConfig {
     useEmailPassword?: boolean;
     expiresIn?: number;
     cookie?: CookieConfig;
+    sendEmail?: (email: AuthEmail) => Promise<void>;
+}
+
+/**
+ * An email to send for authentication purposes
+ * @param type The type of email to send (verification, reset, change), in case you want to customize the email content with your own subject or text
+ * @param to The recipient's email address
+ * @param url The URL to include in the email for the user to click
+ * @param subject A simple default subject for the email
+ * @param text A simple default text body for the email
+ */
+export interface AuthEmail {
+    type: AuthEmailType;
+    to: string;
+    url: string;
+    subject: string;
+    text: string;
 }
 
 /**
@@ -255,6 +272,11 @@ export interface Authenticator extends Plugin {
         path: string;
         getHandler: () => (req: any, res: any, next: any) => Promise<void>;
     };
+}
+
+export enum AuthEmailType {
+    VerifyEmail = 'verifyEmail',
+    ResetPassword = 'resetPassword',
 }
 
 

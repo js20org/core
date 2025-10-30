@@ -69,6 +69,7 @@ const navigation = [
             { href: "/docs-actions", text: "Chained actions" },
             { href: "/docs-crud", text: "Automatic CRUD" },
             { href: "/docs-errors", text: "Error handling" },
+            { href: "/docs-auth-emails", text: "Auth emails" },
             { href: "/docs-security", text: "Security & Prod checklist" },
             { href: "/docs-bypass", text: "Bypass ACL" }
         ]
@@ -304,10 +305,34 @@ async function deleteCar(req: Request) {
         beforeLabel: 'Manually set up auth library & pass middleware',
         afterLabel: 'One line setup, endpoints are logged in by default if auth exists',
         before: `const auth = betterAuth({
-    database: myDatabase,
+    trustedOrigins: [
+        'https://www.example.com',
+        'http://localhost:3000'
+    ],
+    expiresIn: 7 * 24 * 60 * 60, // 7 days
+    database: pool,
     emailAndPassword: {
         enabled: true,
-    }
+        requireEmailVerification: true,
+        sendResetPassword: async ({ user, url }) => {
+            await emailService.send({
+                to: user.email,
+                subject: 'Reset your password',
+                text: 'Click the following link to reset your password: ' + url,
+            });
+        },
+    },
+    emailVerification: {
+        enabled: true,
+        sendOnSignUp: true,
+        sendVerificationEmail: async ({ user, url }) => {
+            await emailService.send({
+                to: user.email,
+                subject: 'Verify your email',
+                text: 'Click the following link to verify your email: ' + url,
+            });
+        },
+    },
 });
 
 async function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -331,11 +356,13 @@ app.get("/api/me", requireAuth, (req, res) => {
 });`,
         after: `app.setAuthenticator(new BetterAuth(database, {
     useEmailPassword: true,
+    sendEmail: emailService.send,
 }));
 
 app.addEndpoint({
     method: 'GET',
     path: '/api/me',
+    isLoggedIn: true,
     run: async (system) {
         return { user: system.user };
     }

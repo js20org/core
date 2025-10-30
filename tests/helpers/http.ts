@@ -165,6 +165,20 @@ export async function assertHttp400Put(path: string, props?: Props) {
     }
 }
 
+export async function assertHttp500Post(path: string, props?: Props) {
+    const url = `http://localhost:3000${path}`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            ...props?.headers
+        },
+        body: JSON.stringify(props?.body)
+    });
+
+    expect(response.status).toBe(500);
+}
+
 export async function assertHttp500Put(path: string, props?: Props) {
     const url = `http://localhost:3000${path}`;
     const response = await fetch(url, {

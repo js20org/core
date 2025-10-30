@@ -1,6 +1,6 @@
 import { sBoolean, sDate, sString } from '@js20/schema';
 import { MySqlDatabase } from '../../database/instances/mysql.js';
-import type { AuthConfig, Authenticator, User as GlobalUser, Headers, PluginProps, InternalModel, NoUndefined } from '../../types.js';
+import { type AuthConfig, type Authenticator, type User as GlobalUser, type Headers, type PluginProps, type InternalModel, type NoUndefined, AuthEmailType, type AuthEmail } from '../../types.js';
 import { betterAuth } from "better-auth";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 import { fontYellow } from '@js20/node-utils';
@@ -124,6 +124,7 @@ export class BetterAuth implements Authenticator {
 
         const pool = this.database.getNewPool();
         const safeConfig = getSafeConfig(this.config);
+        const hasEmailFunction = !!this.config?.sendEmail;
 
         const auth = betterAuth({
             baseURL: safeConfig.baseURL,
@@ -141,6 +142,33 @@ export class BetterAuth implements Authenticator {
             database: pool,
             emailAndPassword: {
                 enabled: useEmailPassword,
+                requireEmailVerification: hasEmailFunction,
+                sendResetPassword: async ({ user, url }) => {
+                    const email: AuthEmail = {
+                        to: user.email,
+                        type: AuthEmailType.ResetPassword,
+                        url,
+                        subject: 'Reset your password',
+                        text: `Click the following link to reset your password: ${url}`,
+                    };
+
+                    await this.config?.sendEmail?.(email);
+                },
+            },
+            emailVerification: {
+                enabled: hasEmailFunction,
+                sendOnSignUp: hasEmailFunction,
+                sendVerificationEmail: async ({ user, url }) => {
+                    const email: AuthEmail = {
+                        to: user.email,
+                        type: AuthEmailType.VerifyEmail,
+                        url,
+                        subject: 'Verify your email',
+                        text: `Click the following link to verify your email: ${url}`,
+                    };
+
+                    await this.config?.sendEmail?.(email);
+                }
             },
         });
 
@@ -182,7 +210,7 @@ export class BetterAuth implements Authenticator {
     }
 }
 
-function getSafeConfig(config?: AuthConfig): NoUndefined<AuthConfig> {
+function getSafeConfig(config?: AuthConfig): NoUndefined<Omit<AuthConfig, 'sendEmail'>> {
     return {
         baseURL: config?.baseURL || 'http://localhost:3000',
         secret: config?.secret || 'my-12-digit-plus-test-secret',
@@ -232,5 +260,13 @@ function verifyConfig(props: PluginProps, config?: AuthConfig) {
         }
 
         console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No cookie.path provided in AuthConfig. Using a default path is insecure. For production environments it will throw an error.`));
+    }
+
+    if (!config?.sendEmail) {
+        if (props.config.isProduction) {
+            throw new Error('[JS20 > BetterAuth] AuthConfig.sendEmail function is required in production to send verification and password reset emails.');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No sendEmail function provided in AuthConfig. You will not be able to send verification or password reset emails.`));
     }
 }

@@ -20,7 +20,7 @@ Under the hood, JS20 applies a lot of security features automatically:
 When you are ready to deploy your app to production, make sure to:
 - **isProduction** flag is set to **true** in the main config 
 - Use **HTTPS**
-- Setup **Authenticator** with all required options (secret, baseURL, cookie domain, etc)
+- Setup **Authenticator** with all required options (secret, baseURL, cookie domain, sendEmail, etc)
 - Setup **allowedOrigins** in the server config to restrict CORS
 
 ## Configure Authenticator

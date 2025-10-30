@@ -2,8 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { getMe, getNewUser, loginUser, logoutUser, signupUser } from '../mock/user';
 import { useMockApp } from '../mock/app';
 import { sString } from '@js20/schema';
-import { assertHttp401, assertHttpOk } from '../helpers/http';
+import { assertHttp401, assertHttp500Post, assertHttpOk } from '../helpers/http';
 import e from 'express';
+import { AuthEmailType } from '../../src/core/types';
 
 async function runLogin() {
     const user = getNewUser();
@@ -297,5 +298,71 @@ describe('Auth E2E Tests', () => {
 
         expect(error).to.be.an('Error');
         expect(error.message).to.equal('AuthConfig.baseURL is required in production');
+    });
+
+    it('no email provider in production throws error', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: true,
+                allowedOrigins: ['http://localhost:3000'],
+                authConfig: {
+                    baseURL: 'http://localhost:3000',
+                    secret: 'supersecret123',
+                    cookie: {
+                        domain: 'yourapp.com',
+                        path: '/'
+                    }
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('[JS20 > BetterAuth] AuthConfig.sendEmail function is required in production to send verification and password reset emails.');
+    });
+
+    it('email verification is sent on signup', async () => {
+        let emailSent = null;
+
+        await useMockApp({
+            authConfig: {
+                sendEmail: async (email) => {
+                    emailSent = email;
+                }
+            }
+        }, async () => {
+            const newUser = getNewUser();
+            await signupUser(newUser);
+
+            expect(emailSent!).to.not.be.null;
+            expect(emailSent!.type).to.equal(AuthEmailType.VerifyEmail);
+            expect(emailSent!.to).to.equal(newUser.email);
+            expect(emailSent!.url).to.be.a('string');
+            expect(emailSent!.subject).to.be.a('string');
+            expect(emailSent!.text).to.be.a('string');
+        });
+    });
+
+    it('error in email handler returns 500 on signup', async () => {
+        await useMockApp({
+            authConfig: {
+                sendEmail: async () => {
+                    throw new Error('Simulated email sending failure');
+                }
+            }
+        }, async () => {
+            const user = getNewUser();
+            await assertHttp500Post('/api/auth/sign-up/email', {
+                body: {
+                    email: user.email,
+                    name: user.name,
+                    password: user.password,
+                    confirmPassword: user.password
+                }
+            });
+        });
     });
 });
