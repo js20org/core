@@ -60,6 +60,7 @@ export class App<M extends ModelObject<M>> {
         ].filter(p => !!p);
 
         const pluginProps: PluginProps = {
+            config: this.config,
             addEndpoints: this.addEndpoints.bind(this),
             addRegexEndpoint: this.addRegexEndpoint.bind(this),
             addProtectedFieldNames: this.addProtectedFieldNames.bind(this),
@@ -119,7 +120,13 @@ export class App<M extends ModelObject<M>> {
             handleError: (e) => globalHandleError(e, this.rawConfig?.handleError),
         };
 
-        await this.server.initialize(requestHandlerProps, data);
+        await this.server.initialize(
+            requestHandlerProps,
+            data,
+            this.config.server,
+            this.config.isProduction,
+            this.authenticator
+        );
     }
 
     private async loadModels() {

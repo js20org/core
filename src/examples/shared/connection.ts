@@ -1,4 +1,4 @@
-import { MysqlConnectOptions } from '@js20/core';
+import { type MysqlConnectOptions } from '@js20/core';
 
 export function getConnectOptions(): MysqlConnectOptions {
     return {

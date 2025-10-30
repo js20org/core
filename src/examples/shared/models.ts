@@ -1,4 +1,4 @@
-import { Model } from '@js20/core';
+import { type Model } from '@js20/core';
 import { sBoolean, sString } from '@js20/schema';
 
 export interface Car {

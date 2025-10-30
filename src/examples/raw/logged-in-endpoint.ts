@@ -1,7 +1,9 @@
 import { sString } from '@js20/schema';
 import { App } from '@js20/core';
 
-const app = new App();
+const app = new App({
+    isProduction: false,
+});
 
 // <include>
 app.addEndpoint({

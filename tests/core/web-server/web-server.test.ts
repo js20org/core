@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { BaseSystem, Endpoint, EndpointMethod, WebServer, WebServerConfig, WebServerType } from '../../../src/core/types';
+import { BaseSystem, Endpoint, EndpointMethod, WebServer, WebServerType } from '../../../src/core/types';
 import { ExpressServer } from '../../../src/core/web-server/instances/express-server';
 import { getComputedEndpoints } from '../../../src/core/utils/endpoints';
 import { sAny } from '@js20/schema';
@@ -7,11 +7,7 @@ import { Request, Response } from 'express';
 import { globalHandleError } from '../../../src/core/utils/error';
 
 const servers: WebServer[] = [
-    new ExpressServer({
-        port: 3000,
-        type: WebServerType.express,
-        allowedOrigins: [],
-    })
+    new ExpressServer()
 ];
 
 function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, any> {
@@ -29,8 +25,6 @@ function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, a
 
 describe.each(servers)('%s', async (server) => {
     beforeAll(async () => {
-        await server.start();
-
         const returnsHeaderEndpoint = getEndpoint('GET', '/headers');
         returnsHeaderEndpoint.run = async (system: BaseSystem<any>) => {
             return system.headers;
@@ -66,7 +60,17 @@ describe.each(servers)('%s', async (server) => {
                 }
             ],
             models: [],
-        });
+        }, {
+            port: 3000,
+            type: WebServerType.express,
+            allowedOrigins: [],
+            rateLimit: {
+                windowMs: 15 * 60 * 1000,
+                max: 300,
+            }
+        }, false);
+
+        await server.start();
     });
 
     afterAll(async () => {

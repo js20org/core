@@ -1,7 +1,9 @@
-import { MysqlConnectOptions, MySqlDatabase, App } from '@js20/core';
+import { type MysqlConnectOptions, MySqlDatabase, App } from '@js20/core';
 import dotenv from 'dotenv';
 
-const app = new App();
+const app = new App({
+    isProduction: false,
+});
 
 //<database>
 dotenv.config({ quiet: true });

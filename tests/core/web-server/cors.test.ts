@@ -18,14 +18,10 @@ function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, a
     };
 }
 
-async function getWebServer(allowedOrigins: string[]) {
-    const webServer = new ExpressServer({
-        port: 3000,
-        type: WebServerType.express,
-        allowedOrigins,
-    });
+async function getWebServer(allowedOrigins: string[], isProduction = false) {
+    const webServer = new ExpressServer();
 
-    webServer.initialize({
+    await webServer.initialize({
         databases: [],
         handleError: async (e) => globalHandleError(e),
     }, {
@@ -35,7 +31,15 @@ async function getWebServer(allowedOrigins: string[]) {
         ], true),
         regexpEndpoints: [],
         models: [],
-    });
+    }, {
+        port: 3000,
+        type: WebServerType.express,
+        allowedOrigins,
+        rateLimit: {
+            windowMs: 15 * 60 * 1000,
+            max: 300,
+        }
+    }, isProduction);
 
     await webServer.start();
 
@@ -149,5 +153,24 @@ describe('CORS', () => {
         expect(res.headers.get('access-control-allow-methods')).toBe('GET,POST,PUT,DELETE,OPTIONS');
 
         await server.stop();
+    });
+
+    it('no origin is allowed', async () => {
+        const server = await getWebServer(['http://allowed.com']);
+
+        const res = await fetch('http://localhost:3000/get', {
+            method: 'GET',
+        });
+
+        expect(res.status).toBe(200);
+        expect(res.headers.get('access-control-allow-origin')).toBeNull();
+        // No Access-Control-Allow-Methods header for non-preflight requests
+        expect(res.headers.get('access-control-allow-methods')).toBeNull();
+
+        await server.stop();
+    });
+
+    it('no allow list in production throws error on server start', async () => {
+        await expect(getWebServer([], true)).rejects.toThrowError('[Security feature] In production, "allowedOrigins" must be set on the server configuration with a list of allowed origins for CORS.');
     });
 });

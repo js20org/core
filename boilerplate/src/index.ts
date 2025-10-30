@@ -27,7 +27,11 @@ const models: Models = {
     }
 }
 
-const app = new App<Models>();
+const app = new App<Models>({
+    // Dev mode for now
+    isProduction: false,
+});
+
 const database = new MySqlDatabase({
     isInMemory: true,
 });

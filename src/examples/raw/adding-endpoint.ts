@@ -1,6 +1,8 @@
 import { App } from '@js20/core';
 
-const app = new App();
+const app = new App({
+    isProduction: false,
+});
 
 //<code>
 import { sInteger } from '@js20/schema';

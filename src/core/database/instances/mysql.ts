@@ -171,6 +171,7 @@ export class MySqlDatabase extends BaseDatabase<Pool> {
             password: options.password,
             database: options.database,
             port: options.port,
+            connectionLimit: 10
         });
     }
 

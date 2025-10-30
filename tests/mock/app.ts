@@ -1,6 +1,6 @@
 import { sBoolean, sInteger, sNumber, sString } from '@js20/schema';
 import { App, BetterAuth, Model, MySqlDatabase } from '../../src/core';
-import { ErrorHandler } from '../../src/core/types';
+import { AuthConfig, ErrorHandler, RateLimitConfig } from '../../src/core/types';
 
 export interface ModelA {
     value: string;
@@ -42,6 +42,10 @@ export const models: Models = {
 
 interface Props {
     models?: any;
+    authConfig?: AuthConfig;
+    isProduction?: boolean;
+    allowedOrigins?: string[];
+    rateLimit?: RateLimitConfig;
     handleError?: ErrorHandler;
     initApp?: (app: App<Models>) => void;
 }
@@ -52,13 +56,18 @@ export async function useMockApp(props: Props, callback: (app: App<Models>) => P
     });
 
     const app = new App<Models>({
-        handleError: props.handleError
+        isProduction: props.isProduction ?? false,
+        handleError: props.handleError,
+        server: {
+            allowedOrigins: props.allowedOrigins,
+            rateLimit: props.rateLimit,
+        }
     });
 
     database.addModels(props.models ?? models);
     app.addDatabase(database);
 
-    const auth = new BetterAuth(database);
+    const auth = new BetterAuth(database, props.authConfig);
     app.setAuthenticator(auth);
 
     if (props.initApp) {

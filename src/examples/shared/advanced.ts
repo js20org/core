@@ -1,8 +1,8 @@
-import { Model } from '@js20/core';
+import { type Model } from '@js20/core';
 import { sBoolean, sEnum, sNumber, sString } from '@js20/schema';
 
 // Make sure it is always included
-import * as TypesShared from '../../core/types-shared';
+import * as TypesShared from '../../core/types-shared.js';
 typeof TypesShared;
 
 export enum Currency {

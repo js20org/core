@@ -3,7 +3,9 @@ import { App } from '../../src/core';
 
 describe('App Lock', () => {
     it('addDatabase should throw an error if the app is locked', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         await app.start();
 
         expect(() => {
@@ -14,7 +16,9 @@ describe('App Lock', () => {
     });
 
     it('addEndpoints should throw an error if the app is locked', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         await app.start();
 
         expect(() => {
@@ -25,7 +29,9 @@ describe('App Lock', () => {
     });
 
     it('addEndpoint should throw an error if the app is locked', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         await app.start();
 
         expect(() => {
@@ -36,7 +42,9 @@ describe('App Lock', () => {
     });
 
     it('setAuthenticator should throw an error if the app is locked', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         await app.start();
 
         expect(() => {
@@ -47,7 +55,9 @@ describe('App Lock', () => {
     });
 
     it('addCrudEndpoints should throw an error if the app is locked', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         await app.start();
 
         expect(() => {

@@ -1,8 +1,9 @@
 import { sBoolean, sDate, sString } from '@js20/schema';
 import { MySqlDatabase } from '../../database/instances/mysql.js';
-import type { AuthConfig, Authenticator, User as GlobalUser, Headers, PluginProps, InternalModel } from '../../types.js';
+import type { AuthConfig, Authenticator, User as GlobalUser, Headers, PluginProps, InternalModel, NoUndefined } from '../../types.js';
 import { betterAuth } from "better-auth";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
+import { fontYellow } from '@js20/node-utils';
 
 interface AuthModels {
     user: InternalModel<User>;
@@ -119,8 +120,24 @@ export class BetterAuth implements Authenticator {
     async initialize(props: PluginProps): Promise<void> {
         const { useEmailPassword = true } = this.config || {};
 
-        const pool = await this.database.getNewPool();
+        verifyConfig(props, this.config);
+
+        const pool = this.database.getNewPool();
+        const safeConfig = getSafeConfig(this.config);
+
         const auth = betterAuth({
+            baseURL: safeConfig.baseURL,
+            secret: safeConfig.secret,
+            trustedOrigins: props.config.server.allowedOrigins,
+            cookie: {
+                name: 'better-auth.session',
+                secure: true,
+                sameSite: 'lax',
+                httpOnly: true,
+                path: safeConfig.cookie.path,
+                domain: safeConfig.cookie.domain,
+            },
+            expiresIn: safeConfig.expiresIn,
             database: pool,
             emailAndPassword: {
                 enabled: useEmailPassword,
@@ -129,14 +146,6 @@ export class BetterAuth implements Authenticator {
 
         this.database.addModels(models);
         this.auth = auth;
-
-        const handler = toNodeHandler(auth);
-
-        props.addRegexEndpoint({
-            plugin: 'better-auth',
-            path: '/api/auth/*',
-            getHandler: () => handler,
-        });
     }
 
     async getUserFromHeaders(headers: Headers): Promise<GlobalUser | null> {
@@ -159,5 +168,69 @@ export class BetterAuth implements Authenticator {
         } else {
             return null;
         }
+    }
+
+    getRoutesHandler() {        
+        if (!this.auth) {
+            throw new Error('BetterAuth not initialized');
+        }
+
+        return {
+            path: '/api/auth/*',
+            getHandler: () => toNodeHandler(this.auth),
+        };
+    }
+}
+
+function getSafeConfig(config?: AuthConfig): NoUndefined<AuthConfig> {
+    return {
+        baseURL: config?.baseURL || 'http://localhost:3000',
+        secret: config?.secret || 'my-12-digit-plus-test-secret',
+        cookie: {
+            domain: config?.cookie?.domain || 'http://localhost',
+            path: config?.cookie?.path || '/',
+        },
+        expiresIn: config?.expiresIn || 1000 * 60 * 60 * 24 * 7, // 7 days
+        useEmailPassword: config?.useEmailPassword ?? true,
+    };
+}
+
+function verifyConfig(props: PluginProps, config?: AuthConfig) {
+    const isInvalid = config?.secret && config.secret.length < 12;
+
+    if (isInvalid) {
+        throw new Error('AuthConfig.secret must be at least 12 characters long');
+    }
+
+    if (!config?.baseURL) {
+        if (props.config.isProduction) {
+            throw new Error('AuthConfig.baseURL is required in production');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No baseURL provided in AuthConfig. Using a default baseURL is insecure. For production environments it will throw an error.`));
+    }
+    
+    if (!config?.secret) {
+        if (props.config.isProduction) {
+            throw new Error('AuthConfig.secret is required in production');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No secret provided in AuthConfig. Using a default secret is insecure. For production environments it will throw an error.`));
+    }
+
+    if (!config?.cookie?.domain) {
+        if (props.config.isProduction) {
+            throw new Error('AuthConfig.cookie.domain is required in production');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No cookie.domain provided in AuthConfig. Using a default domain is insecure. For production environments it will throw an error.`));
+    }
+
+    if (!config?.cookie?.path) {
+        if (props.config.isProduction) {
+            throw new Error('AuthConfig.cookie.path is required in production');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No cookie.path provided in AuthConfig. Using a default path is insecure. For production environments it will throw an error.`));
     }
 }
