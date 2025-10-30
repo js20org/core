@@ -69,6 +69,8 @@ Body:
 
 The sign-in response will contain an auth Cookie. Use this cookie in subsequent requests to access protected endpoints.
 
+[Read more](https://www.js20.dev/docs-authentication)
+
 ## Endpoints
 With a valid cookie you can now make requests like:
 

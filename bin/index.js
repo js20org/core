@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 const files = [
     'src/index.ts',
-    '_.env',
     '_tsconfig.json',
     '_.gitignore',
     'package.json',
