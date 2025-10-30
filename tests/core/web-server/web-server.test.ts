@@ -25,8 +25,6 @@ function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, a
 
 describe.each(servers)('%s', async (server) => {
     beforeAll(async () => {
-        await server.start();
-
         const returnsHeaderEndpoint = getEndpoint('GET', '/headers');
         returnsHeaderEndpoint.run = async (system: BaseSystem<any>) => {
             return system.headers;
@@ -71,6 +69,8 @@ describe.each(servers)('%s', async (server) => {
                 max: 300,
             }
         }, false);
+
+        await server.start();
     });
 
     afterAll(async () => {
