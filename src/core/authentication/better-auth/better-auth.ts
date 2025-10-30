@@ -185,7 +185,7 @@ export class BetterAuth implements Authenticator {
 function getSafeConfig(config?: AuthConfig): NoUndefined<AuthConfig> {
     return {
         baseURL: config?.baseURL || 'http://localhost:3000',
-        secret: config?.secret || 'test-secret',
+        secret: config?.secret || 'my-12-digit-plus-test-secret',
         cookie: {
             domain: config?.cookie?.domain || 'http://localhost',
             path: config?.cookie?.path || '/',
