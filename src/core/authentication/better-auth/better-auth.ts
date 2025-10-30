@@ -201,6 +201,14 @@ function verifyConfig(props: PluginProps, config?: AuthConfig) {
     if (isInvalid) {
         throw new Error('AuthConfig.secret must be at least 12 characters long');
     }
+
+    if (!config?.baseURL) {
+        if (props.config.isProduction) {
+            throw new Error('AuthConfig.baseURL is required in production');
+        }
+
+        console.warn(fontYellow(`[JS20 > BetterAuth] Warning: No baseURL provided in AuthConfig. Using a default baseURL is insecure. For production environments it will throw an error.`));
+    }
     
     if (!config?.secret) {
         if (props.config.isProduction) {

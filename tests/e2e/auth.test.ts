@@ -193,6 +193,7 @@ describe('Auth E2E Tests', () => {
                 isProduction: true,
                 allowedOrigins: ['http://localhost:3000'],
                 authConfig: {
+                    baseURL: 'http://localhost:3000',
                     secret: '',
                     cookie: {
                         domain: 'yourapp.com',
@@ -216,6 +217,7 @@ describe('Auth E2E Tests', () => {
                 isProduction: true,
                 allowedOrigins: ['http://localhost:3000'],
                 authConfig: {
+                    baseURL: 'http://localhost:3000',
                     secret: 'supersecret123',
                     cookie: {
                         domain: '',
@@ -239,6 +241,7 @@ describe('Auth E2E Tests', () => {
                 isProduction: true,
                 allowedOrigins: ['http://localhost:3000'],
                 authConfig: {
+                    baseURL: 'http://localhost:3000',
                     secret: 'supersecret123',
                     cookie: {
                         domain: 'yourapp.com',
@@ -261,6 +264,7 @@ describe('Auth E2E Tests', () => {
             await useMockApp({
                 isProduction: false,
                 authConfig: {
+                    baseURL: 'http://localhost:3000',
                     secret: 'short',
                 }
             }, async () => {});
@@ -270,5 +274,28 @@ describe('Auth E2E Tests', () => {
 
         expect(error).to.be.an('Error');
         expect(error.message).to.equal('AuthConfig.secret must be at least 12 characters long');
+    });
+
+    it('no baseURL in production throws error', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: true,
+                allowedOrigins: ['http://localhost:3000'],
+                authConfig: {
+                    secret: 'supersecret123',
+                    cookie: {
+                        domain: 'yourapp.com',
+                        path: '/'
+                    }
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('AuthConfig.baseURL is required in production');
     });
 });
