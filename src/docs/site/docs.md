@@ -30,8 +30,3 @@ $$ import src/examples/hello-world.ts --show-output
 * **start()** - Starts a new app using express under the hood
 * By default the app only has a single health endpoint at **GET /**
 
-## Beta version
-
-**Note:** JS20 is currently in beta. We are working on the final pieces to make it fully production-ready. Please try it out and give us feedback, but we don't recommend using it in production yet.
-
-- [Project Status](https://github.com/orgs/js20org/projects/3/views/1)
