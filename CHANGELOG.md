@@ -1,3 +1,19 @@
+# [1.8.0](https://github.com/js20org/core/compare/v1.7.1...v1.8.0) (2025-10-30)
+
+
+### Bug Fixes
+
+* larger test secret ([8b2a6d6](https://github.com/js20org/core/commit/8b2a6d6d1247306233932d11f12a834662a6c011))
+* throw error for missing baseurl ([ac6a854](https://github.com/js20org/core/commit/ac6a854d172603340ece8e3a26ade22e4199b7e5))
+
+
+### Features
+
+* document security & prod checklist ([f3db2d9](https://github.com/js20org/core/commit/f3db2d9a524c4d46167ae00c797923fac8d4690f))
+* improved auth documentation with examples on how to use it ([ad47aa9](https://github.com/js20org/core/commit/ad47aa9124d25ee5555f8448fd662da36a537177))
+* replace github link to core one ([140b917](https://github.com/js20org/core/commit/140b9174c02942117ea9aa50804aa5e18d552df2))
+* security upgrade. Rate limiting, security headers, auth configs, isProduction flag, errors if certain things are missing when prod is true, and other security features ([c31478c](https://github.com/js20org/core/commit/c31478c970940d400aeae2366247253a743a0a91))
+
 ## [1.7.1](https://github.com/js20org/core/compare/v1.7.0...v1.7.1) (2025-10-28)
 
 
