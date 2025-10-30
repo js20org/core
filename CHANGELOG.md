@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/js20org/core/compare/v1.8.0...v1.9.0) (2025-10-30)
+
+
+### Features
+
+* email verification and password reset, closes [#8](https://github.com/js20org/core/issues/8) ([f975ae2](https://github.com/js20org/core/commit/f975ae293bf7430b30cf053664af90a71c6d3907))
+
 # [1.8.0](https://github.com/js20org/core/compare/v1.7.1...v1.8.0) (2025-10-30)
 
 
