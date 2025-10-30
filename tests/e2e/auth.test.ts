@@ -3,6 +3,7 @@ import { getMe, getNewUser, loginUser, logoutUser, signupUser } from '../mock/us
 import { useMockApp } from '../mock/app';
 import { sString } from '@js20/schema';
 import { assertHttp401, assertHttpOk } from '../helpers/http';
+import e from 'express';
 
 async function runLogin() {
     const user = getNewUser();
@@ -182,5 +183,92 @@ describe('Auth E2E Tests', () => {
                 },
             });
         });
+    });
+
+    it('no secret in production throws error', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: true,
+                allowedOrigins: ['http://localhost:3000'],
+                authConfig: {
+                    secret: '',
+                    cookie: {
+                        domain: 'yourapp.com',
+                        path: '/'
+                    }
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('AuthConfig.secret is required in production');
+    });
+
+    it('no cookie domain in production throws error', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: true,
+                allowedOrigins: ['http://localhost:3000'],
+                authConfig: {
+                    secret: 'supersecret123',
+                    cookie: {
+                        domain: '',
+                        path: '/'
+                    }
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('AuthConfig.cookie.domain is required in production');
+    });
+
+    it('no cookie path in production throws error', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: true,
+                allowedOrigins: ['http://localhost:3000'],
+                authConfig: {
+                    secret: 'supersecret123',
+                    cookie: {
+                        domain: 'yourapp.com',
+                        path: ''
+                    }
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('AuthConfig.cookie.path is required in production');
+    });
+
+    it('secret must be 12 characters long', async () => {
+        let error = null;
+
+        try {
+            await useMockApp({
+                isProduction: false,
+                authConfig: {
+                    secret: 'short',
+                }
+            }, async () => {});
+        } catch (err: any) {
+            error = err;
+        }
+
+        expect(error).to.be.an('Error');
+        expect(error.message).to.equal('AuthConfig.secret must be at least 12 characters long');
     });
 });

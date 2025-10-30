@@ -50,7 +50,9 @@ describe('Model', () => {
             }
         });
 
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         app.addDatabase(database);
 
         await expect(() => app.start()).rejects.toThrow(/Model with name "modelA" already registered/);
@@ -73,7 +75,9 @@ describe('Model', () => {
             }
         });
 
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         app.addDatabase(database);
 
         await expect(app.start()).rejects.toThrow(/Model with key "modelA" already registered/);
@@ -96,7 +100,9 @@ describe('Model', () => {
             }
         });
 
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         app.addDatabase(database);
 
         await expect(app.start()).resolves.not.toThrow();
@@ -115,7 +121,9 @@ describe('Model', () => {
             }
         });
 
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
         app.addDatabase(database);
 
         await expect(app.start()).rejects.toThrow(/Field 'id' is a protected field used by the system and can not be used by model/);
@@ -124,7 +132,9 @@ describe('Model', () => {
 
 describe('Endpoints', () => {
     it('path requires starting slash', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
 
         app.addEndpoint({
             method: 'GET',
@@ -138,7 +148,9 @@ describe('Endpoints', () => {
     });
 
     it('path can not have trailing slash', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
 
         app.addEndpoint({
             method: 'GET',
@@ -152,7 +164,9 @@ describe('Endpoints', () => {
     });
 
     it('validates endpoint', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
 
         expect(() => app.addEndpoint({
             method: 'INVALID' as any,
@@ -164,7 +178,9 @@ describe('Endpoints', () => {
     });
 
     it('duplicate endpoint paths and methods throw error', async () => {
-        const app = new App();
+        const app = new App({
+            isProduction: false,
+        });
 
         app.addEndpoint({
             method: 'GET',

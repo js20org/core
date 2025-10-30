@@ -10,10 +10,12 @@ import { type Database as BetterSqlite3Database } from 'better-sqlite3';
 //<config>
 /**
  * Configuration for the App
+ * @param isProduction Whether the app is running in production mode, defaults to true
  * @param server Configuration for the web server (Express, etc.)
  * @param handleError A custom error handler to format errors returned to clients
  */
 export interface AppConfig {
+    isProduction?: boolean;
     server?: WebServerConfig;
     handleError?: ErrorHandler;
 }
@@ -41,11 +43,23 @@ export type ErrorHandler = (error: any) => Promise<ErrorResponse>;
  * @param type The type of web server to use, defaults to 'express'
  * @param port The port to run the web server on, defaults to 3000 or process.env.PORT
  * @param allowedOrigins A list of allowed origins for CORS, if not provided, CORS is set to allow all origins
+ * @param rateLimit Configuration for rate limiting
  */
 export interface WebServerConfig {
     type?: WebServerType;
     port?: number;
     allowedOrigins?: string[];
+    rateLimit?: RateLimitConfig;
+}
+
+/**
+ * Configuration for rate limiting
+ * @param windowMs The time frame for which requests are checked/remembered (in milliseconds), defaults to 15 minutes
+ * @param max The maximum number of connections to allow during the windowMs time frame, defaults to 300
+ */
+export interface RateLimitConfig {
+    windowMs?: number;
+    max?: number;
 }
 
 /**
@@ -80,7 +94,7 @@ export interface AppData {
 // ---------------- Web Server ----------------
 
 export interface WebServer {
-    initialize(props: RequestHandlerProps, appData: AppData): Promise<void>;
+    initialize(props: RequestHandlerProps, appData: AppData, config: NoUndefined<WebServerConfig>, isProduction: boolean, authenticator?: Authenticator): Promise<void>;
     start(): Promise<void>;
     stop(): Promise<void>;
 }
@@ -89,6 +103,7 @@ export interface WebServer {
 // ---------------- Plugins ----------------
 
 export interface PluginProps {
+    config: InternalConfig;
     addEndpoints(...endpoints: Endpoint<any, any, any>[]): void;
     addRegexEndpoint(endpoint: RegexEndpoint<any>): void;
     addProtectedFieldNames(fieldNames: string[]): void;
@@ -197,9 +212,34 @@ export interface Database<Pool> extends Plugin {
 
 // ---------------- Authentication ----------------
 
+//<authConfig>
+/**
+ * Configuration for authentication plugins
+ * @param baseURL The base URL of your app, used for redirecting users after login
+ * @param secret A secret key used for signing tokens or cookies
+ * @param useEmailPassword Whether to enable email and password authentication, defaults to true
+ * @param expiresIn The expiration time for tokens or sessions in milliseconds
+ * @param cookie Configuration for authentication cookies
+ */
 export interface AuthConfig {
+    baseURL?: string;
+    secret: string;
     useEmailPassword?: boolean;
+    expiresIn?: number;
+    cookie?: CookieConfig;
 }
+
+/**
+ * Configuration for authentication cookies
+ * @param domain The domain for which the cookie is valid, required in production
+ * @param path The path for which the cookie is valid
+ */
+export interface CookieConfig {
+    domain?: string;
+    path?: string;
+}
+
+//</authConfig>
 
 export interface User {
     id: string;
@@ -211,6 +251,10 @@ export type Headers = Record<string, string>;
 
 export interface Authenticator extends Plugin {
     getUserFromHeaders(headers: Headers): Promise<User | null>;
+    getRoutesHandler(): {
+        path: string;
+        getHandler: () => (req: any, res: any, next: any) => Promise<void>;
+    };
 }
 
 

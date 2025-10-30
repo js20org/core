@@ -6,7 +6,9 @@ import { getNewUser, loginUser, signupUser } from '../mock/user';
 
 describe('Default is owned', () => {
     it('no auth means isOwned is false', async () => {
-        const app = new App<{ testModel: any }>();
+        const app = new App<{ testModel: any }>({
+            isProduction: false,
+        });
         // No authenticator
 
         const database = new MySqlDatabase({
@@ -52,7 +54,9 @@ describe('Default is owned', () => {
     });
 
     it('with auth means isOwned so saving throws error', async () => {
-        const app = new App<{ testModel: any }>();
+        const app = new App<{ testModel: any }>({
+            isProduction: false,
+        });
         
         const database = new MySqlDatabase({
             isInMemory: true
@@ -92,7 +96,9 @@ describe('Default is owned', () => {
     });
 
     it('with auth means isOwned so auth user can save', async () => {
-        const app = new App<{ testModel: any }>();
+        const app = new App<{ testModel: any }>({
+            isProduction: false,
+        });
         
         const database = new MySqlDatabase({
             isInMemory: true
