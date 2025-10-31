@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/js20org/core/compare/v1.11.1...v1.12.0) (2025-10-31)
+
+
+### Features
+
+* new video with generate ([3235cfc](https://github.com/js20org/core/commit/3235cfc6522e3b9f6e71d003d1a6b7687eeff25c))
+
 ## [1.11.1](https://github.com/js20org/core/compare/v1.11.0...v1.11.1) (2025-10-31)
 
 
