@@ -46,6 +46,41 @@ body {
 .startPage {
     width: 100%;
 
+    .startPageDivider {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-lg) 0;
+
+        a {
+            text-decoration: none;
+        }
+
+        .startPageDividerInner {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
+            padding: var(--space-sm) var(--space-md);
+
+            i {
+                color: var(--muted-foreground);
+                line-height: 1rem;
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1rem;
+                color: black;
+            }
+        }
+    }
+
     .hero {
         width: 100%;
         display: flex;
@@ -93,6 +128,10 @@ body {
 
             .buttonWrapper {
                 margin-bottom: 2*2rem;
+
+                &.noMargin {
+                    margin-bottom: 0;
+                }
             }
 
             pre {
@@ -145,6 +184,16 @@ body {
                     }
                 }
             }
+        }
+    }
+
+    .videoWrapper {
+        max-width: 800px;
+
+        video {
+            width: 100%;
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
         }
     }
 
