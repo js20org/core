@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/js20org/core/compare/v1.10.1...v1.11.0) (2025-10-31)
+
+
+### Features
+
+* coding video on start page ([6697363](https://github.com/js20org/core/commit/6697363e06c1bf4823a325b6baa1cae4d0c58ee3))
+
 ## [1.10.1](https://github.com/js20org/core/compare/v1.10.0...v1.10.1) (2025-10-30)
 
 
