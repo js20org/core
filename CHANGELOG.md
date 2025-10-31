@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/js20org/core/compare/v1.11.0...v1.11.1) (2025-10-31)
+
+
+### Bug Fixes
+
+* improved speed of code video ([780cf15](https://github.com/js20org/core/commit/780cf158c1df2606df4312adafe107abdb5a0c0b))
+
 # [1.11.0](https://github.com/js20org/core/compare/v1.10.1...v1.11.0) (2025-10-31)
 
 
