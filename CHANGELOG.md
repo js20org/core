@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/js20org/core/compare/v1.12.0...v1.13.0) (2025-11-03)
+
+
+### Features
+
+* gif og image ([408b10a](https://github.com/js20org/core/commit/408b10a6885e46d6db35a4d3817b0798f3df18af))
+
 # [1.12.0](https://github.com/js20org/core/compare/v1.11.1...v1.12.0) (2025-10-31)
 
 
