@@ -144,11 +144,12 @@ export class ExpressServer implements WebServer {
         this.app.disable('x-powered-by');
         this.app.set('trust proxy', 1);
 
-        // Add auth routes before express.json()
-        this.setupAuthenticatorRoutes(authenticator);
         this.addCors(config, isProduction);
         this.addSecurityHeaders();
         this.addRateLimiter(config);
+
+        // Add auth routes before express.json()
+        this.setupAuthenticatorRoutes(authenticator);
 
         this.app.use(Express.json({ limit: '200kb' }));
         this.app.use(Express.urlencoded({ extended: false, limit: '200kb' }));
