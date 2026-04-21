@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Endpoint, EndpointMethod, WebServerType } from '../../../src/core/types';
+import { Authenticator, Endpoint, EndpointMethod, Headers, User, WebServerType } from '../../../src/core/types';
 import { ExpressServer } from '../../../src/core/web-server/instances/express-server';
 import { globalHandleError } from '../../../src/core/utils/error';
 import { sAny } from '@js20/schema';
@@ -18,7 +18,20 @@ function getEndpoint(method: EndpointMethod, path: string): Endpoint<any, any, a
     };
 }
 
-async function getWebServer(allowedOrigins: string[], isProduction = false) {
+function getMockAuthenticator(): Authenticator {
+    return {
+        initialize: async () => {},
+        getUserFromHeaders: async (_headers: Headers): Promise<User | null> => null,
+        getRoutesHandler: () => ({
+            path: '/api/auth/*',
+            getHandler: () => async (_req: any, res: any, _next: any) => {
+                res.status(200).json({ session: null });
+            },
+        }),
+    };
+}
+
+async function getWebServer(allowedOrigins: string[], isProduction = false, authenticator?: Authenticator) {
     const webServer = new ExpressServer();
 
     await webServer.initialize({
@@ -39,7 +52,7 @@ async function getWebServer(allowedOrigins: string[], isProduction = false) {
             windowMs: 15 * 60 * 1000,
             max: 300,
         }
-    }, isProduction);
+    }, isProduction, authenticator);
 
     await webServer.start();
 
@@ -172,5 +185,55 @@ describe('CORS', () => {
 
     it('no allow list in production throws error on server start', async () => {
         await expect(getWebServer([], true)).rejects.toThrowError('[Security feature] In production, "allowedOrigins" must be set on the server configuration with a list of allowed origins for CORS.');
+    });
+
+    it('with allow list applies CORS headers to auth routes GET request', async () => {
+        const server = await getWebServer(['http://localhost:3000'], false, getMockAuthenticator());
+
+        const res = await fetch('http://localhost:3000/api/auth/get-session', {
+            method: 'GET',
+            headers: {
+                Origin: 'http://localhost:3000',
+            },
+        });
+
+        expect(res.status).toBe(200);
+        expect(res.headers.get('access-control-allow-origin')).toBe('http://localhost:3000');
+
+        await server.stop();
+    });
+
+    it('with allow list handles preflight OPTIONS on auth routes', async () => {
+        const server = await getWebServer(['http://localhost:3000'], false, getMockAuthenticator());
+
+        const res = await fetch('http://localhost:3000/api/auth/get-session', {
+            method: 'OPTIONS',
+            headers: {
+                Origin: 'http://localhost:3000',
+                'Access-Control-Request-Method': 'GET',
+            },
+        });
+
+        expect(res.status).toBe(204);
+        expect(res.headers.get('access-control-allow-origin')).toBe('http://localhost:3000');
+        expect(res.headers.get('access-control-allow-methods')).toBe('GET,POST,PUT,DELETE,OPTIONS');
+
+        await server.stop();
+    });
+
+    it('no allow list applies wildcard CORS headers to auth routes GET request', async () => {
+        const server = await getWebServer([], false, getMockAuthenticator());
+
+        const res = await fetch('http://localhost:3000/api/auth/get-session', {
+            method: 'GET',
+            headers: {
+                Origin: 'http://example.com',
+            },
+        });
+
+        expect(res.status).toBe(200);
+        expect(res.headers.get('access-control-allow-origin')).toBe('*');
+
+        await server.stop();
     });
 });
